@@ -1,0 +1,2 @@
+#Конфиг сервера.
+php_value default_charset UTF-8
