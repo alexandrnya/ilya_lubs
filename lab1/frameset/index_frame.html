@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+        "http://www.w3.org/TR/html4/frameset.dtd">
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script>
+        function loadFrames() {
+            window.frames[0].location.href = "frame1.html";
+            window.frames[1].location.href = "frame2.html";
+        }
+    </script>
+</head>
+<frameset cols="50%,50%" onload="loadFrames()">
+    <frame name="frame1">
+    <frame name="frame2">
+</frameset>
+</html>

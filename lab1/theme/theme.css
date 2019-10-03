@@ -33,3 +33,36 @@ body {
     float: left; /*Размещаем список горизонтально для реализации меню*/
 }
 
+#left_block ul {
+    list-style: decimal outside; /*убираем маркеры списка*/
+    padding-left: 24px;
+}
+
+#left_block a {
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+    color: darkred;
+}
+
+#left_block a:visited{
+    color: grey;
+}
+
+#left_block a:hover{
+    color: #D43737;
+}
+
+#left_block ul li {
+    margin: 8px 0;
+    color: darkred; /*Цвет маркеров*/
+}
+
+#left_block ul li:hover{
+    color: #D43737;
+}
+
+#footer {
+    background: darkred;
+    padding: 20px;
+    color:#fff; /*меняем цвет ссылок*/
+}
+
