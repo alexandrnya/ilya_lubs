@@ -18,9 +18,14 @@ function createMenu()
     <div id="wide_menu">
         <ul>
             <li><a href="index.php">Главная</a></li>
-            <li><a href="about.php">О Компании</a></li>
+            <li><a href="about.php">О Компании</a>
+                <ul class="submenu">
+                    <li> <a href="index.php">Первое сабменю</a></li>
+                    <li> <a href="google">второе сабменю</a></li>
+                </ul>
+            </li>
             <li><a href="help247.php">Удаленная поддержка "24/7"</a></li>
-            <li><a href="https://www.google.com" onclick="alert('Вы покидаете текущий сайт и попадаете на сайт google.com')">google.com</a></li>
+            <li><a href="https://www.google.com" onclick="alert('Вы покидаете текущий сайт и попадаете на сайт google.com')">google.com (Подтверждение)</a></li>
         </ul>
     </div>
     <?
