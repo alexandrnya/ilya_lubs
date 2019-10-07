@@ -20,7 +20,7 @@ function createMenu()
             <li><a href="index.php">Главная</a></li>
             <li><a href="about.php">О Компании</a>
                 <ul class="submenu">
-                    <li> <a href="index.php">Первое сабменю</a></li>
+                    <li> <a href="galery.php">Галерея</a></li>
                     <li> <a href="google">второе сабменю</a></li>
                 </ul>
             </li>
@@ -40,6 +40,9 @@ function createMenu()
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styles/styles.css">
         <link rel="stylesheet" id="theme" href="<?=$_COOKIE["theme"]?:"styles/themes/red.css"?>">
+
+        <link rel="stylesheet" href="../lib/lightbox/css/lightbox.min.css">
+
         <script src="script.js"></script>
         <title><?=$title?></title>
     </head>
@@ -60,6 +63,9 @@ function createMenu()
         </div>
     </div>
     <?htmlPopup()?>
+
+    <script src="../lib/lightbox/js/lightbox-plus-jquery.min.js"></script>
+
     </body>
     </html>
     <?

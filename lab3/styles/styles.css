@@ -202,3 +202,12 @@ strong {
 .closebtn:hover {
     color: black;
 }
+
+.gallery-item img {
+    height: 170px;
+    -moz-box-shadow: 0 0 8px 0;
+    box-shadow: 0 0 8px 0;
+}
+.gallery-item {
+    margin: 5px;
+}
