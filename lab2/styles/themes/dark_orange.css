@@ -51,3 +51,7 @@ body {
     color: #fff;
     background: #863e00;
 }
+
+#header #info {
+    color: black;
+}
