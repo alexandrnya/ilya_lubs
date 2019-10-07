@@ -1,4 +1,17 @@
 <?php
+date_default_timezone_set('asia/krasnoyarsk');
+
+function htmlInfo()
+{
+    ?>
+    <div id="info">
+        <span>Host: <?=gethostname()?></span><br />
+        <span>IP: <?=$_SERVER["REMOTE_ADDR"]?></span><br />
+        <span>Текущее время: <?=date("H:i:s");?></span>
+    </div>
+    <?
+}
+
 function createMenu()
 {
     ?>
@@ -28,6 +41,7 @@ function createMenu()
     <body>
     <div id="main_container">
         <div id="header">
+            <?htmlInfo()?>
             <?createMenu()?>
         </div>
     <?
