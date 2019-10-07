@@ -25,7 +25,7 @@ function createMenu()
                 </ul>
             </li>
             <li><a href="help247.php">Удаленная поддержка "24/7"</a></li>
-            <li><a href="https://www.google.com" onclick="alert('Вы покидаете текущий сайт и попадаете на сайт google.com')">google.com (Подтверждение)</a></li>
+            <li><a href="https://www.google.com" onclick="getAlert()">google.com (Подтверждение)</a></li>
         </ul>
     </div>
     <?
@@ -59,15 +59,34 @@ function createMenu()
             Тут будет футер для всех страниц
         </div>
     </div>
+    <?htmlPopup()?>
     </body>
     </html>
     <?
     }
 
+function htmlPopup() {
+    ?>
+    <div id="popup" class="popup" style="display: none">
+        <div class="popup-content">
+            <span class="closebtn" onclick="closePopup()">&times;</span>
+            Введите имя
+            <input type="text" name="name" placeholder="Илюша" value="<?=$_COOKIE["name"]?:""?>">
+            <button onclick="saveName()">Сохранить</button>
+        </div>
+    </div>
+    <?
+}
+
 function htmlLeftBlock() {
     ?>
     <div id="left_block">
-        <div id="switch_theme" onclick="changeTheme()"><div>Переключатель тем</div></div>
+        <div id="switch_theme">
+            <div id="salute" onclick="createPopup()"><strong>Привет</strong></div>
+            <br />
+            <br />
+            <div onclick="changeTheme()">Переключатель тем</div>
+        </div>
         <ul>
             <li>
                 <a href="rs.php">Обслуживание рабочих станций</a>

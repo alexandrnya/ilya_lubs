@@ -40,6 +40,53 @@ function deleteCookie(name) {
     })
 }
 
+function createPopup() {
+    var popup = document.querySelector("#popup");
+    if(!popup) {
+        var popupCreate = document.createElement("div");
+        popupCreate.className = "popup";
+        popupCreate.id = "popup";
+        popupCreate.innerHTML = "<div class='popup-content'>\n" +
+            "            <span class='closebtn' onclick='closePopup()'>&times;</span>\n" +
+            "            Введите имя\n" +
+            "            <input type='text' name='name' placeholder='Илюша'>\n" +
+            "            <button onclick='saveName()'>Сохранить</button>\n" +
+            "        </div>";
+        document.body.append(popupCreate);
+    } else {
+        openPopup();
+    }
+}
+
+function saveName() {
+    var input = document.querySelector("#popup input[name=name]");
+    var inputValue = input.value;
+    //if (inputValue.length > 0)
+    {
+        setCookie("name", inputValue);
+        closePopup();
+        getSalute();
+    }
+}
+
+function closePopup() {
+    document.querySelector("#popup").style.display='none';
+}
+
+function openPopup() {
+    document.querySelector("#popup").style.display='block';
+}
+
+function getSalute() {
+    var name = getCookie("name");
+    var salute = document.querySelector("div#salute");
+    if(name.length > 0) {
+        salute.innerHTML = "<strong>Привет, " + name + "</strong>";
+    } else {
+        salute.innerHTML = "<strong>Привет</strong>";
+    }
+}
+
 function changeTheme() {
     const theme = document.querySelector("link#theme");
     var themeCookie = getCookie("theme"),
@@ -56,7 +103,19 @@ function changeTheme() {
     }
 }
 
-window.onload = function () {
+function getAlert() {
+    var name = getCookie("name");
+    var mess = "";
+    if(name.length > 0) {
+        mess = name + ", вы покидаете текущий сайт и попадаете на сайт google.com";
+    }
+    else {
+        mess = "Вы покидаете текущий сайт и попадаете на сайт google.com";
+    }
+    alert(mess);
+}
+
+function selectedActiveMenu() {
     var location = window.location.href;
     as = document.querySelectorAll("a");
     for(let key in as) {
@@ -64,4 +123,20 @@ window.onload = function () {
             as[key].classList.add("selected");
         }
     }
+
+}
+
+function getName() {
+    var name = getCookie("name");
+    if(name.length === 0) {
+        openPopup();
+    }
+    else {
+        getSalute();
+    }
+}
+
+window.onload = function () {
+    selectedActiveMenu();
+    getName();
 };
