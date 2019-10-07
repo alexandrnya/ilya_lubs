@@ -1,16 +1,17 @@
+#wide_menu ul li .submenu li,
 #wide_menu ul {
-    background:darkred; /*добавляем фон всему меню*/
+    background: darkred; /*добавляем фон всему меню*/
 }
 
 #wide_menu a {
-    color:#fff; /*меняем цвет ссылок*/
+    color: #fff; /*меняем цвет ссылок*/
     border-color: #F36262;
 
 }
 
 #wide_menu .selected,
 #wide_menu a:hover {
-    background:#D43737;/*добавляем эффект при наведении*/
+    background: #D43737; /*добавляем эффект при наведении*/
 }
 
 #left_block ul li,
@@ -20,16 +21,16 @@
 
 #left_block .selected,
 #left_block ul li:hover,
-#left_block a:hover{
+#left_block a:hover {
     color: #D43737;
 }
 
-#left_block .selected{
+#left_block .selected {
     color: grey;
 }
 
 #footer {
-    color:#fff; /*меняем цвет ссылок*/
+    color: #fff; /*меняем цвет ссылок*/
     background: darkred;
 }
 

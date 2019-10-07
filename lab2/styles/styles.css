@@ -3,17 +3,27 @@ body {
     margin: 0;
 
     font-family: arial, serif; /*меняем шрифт*/
-    font-size:16px;
+    font-size: 16px;
 
     -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
     -o-transition: all 0.3s 0.01s ease;
     -webkit-transition: all 0.3s 0.01s ease;
     transition: all 0.3s 0.01s ease;
 }
+
+#left_block *,
+#wide_menu * {
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+    transition: all 0.3s 0.01s ease;
+}
+
 #body {
     padding: 0 20px;
 }
-#body p{
+
+#body p {
     margin-bottom: 21px;
 }
 
@@ -31,15 +41,17 @@ body {
 
 #wide_menu a {
     text-decoration: none; /*убираем подчеркивание текста ссылок*/
-    padding:0 15px; /*добавляем отступ*/
-    line-height:50px; /*ровняем меню по вертикали*/
+    padding: 0 15px; /*добавляем отступ*/
+    line-height: 50px; /*ровняем меню по вертикали*/
     display: block;
-    border-right: 1px solid; /*добавляем бордюр справа*/
+    border: 1px solid; /*добавляем бордюр справа*/
 
 }
 
 #wide_menu li {
+    margin: -1px 0 0 -1px;
     float: left; /*Размещаем список горизонтально для реализации меню*/
+    position: relative;
 }
 
 #left_block {
@@ -61,8 +73,6 @@ body {
 }
 
 
-
-
 #footer {
     padding: 20px;
     margin-top: 40px;
@@ -77,12 +87,11 @@ body {
 }
 
 
-
-#body{
+#body {
     display: table;
 }
 
-#body table td{
+#body table td {
     padding: 20px 10px;
 }
 
@@ -95,7 +104,7 @@ body {
     top: -30px;
 }
 
-#switch_theme div{
+#switch_theme div {
 
     position: fixed;
     display: inline-block;
@@ -103,7 +112,7 @@ body {
     padding: 5px;
     border-radius: 4px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1;
 }
 
 #header #info {
@@ -121,10 +130,12 @@ body {
 .hint {
     position: relative;
 }
+
 .hint:hover::after {
     content: attr(data-title); /* Выводим текст */
     position: absolute; /* Абсолютное позиционирование */
-    left: 0; top: 100%; /* Положение подсказки */
+    left: 0;
+    top: 100%; /* Положение подсказки */
     z-index: 1; /* Отображаем подсказку поверх других элементов */
     padding: 5px 10px; /* Поля */
     border: 1px solid black; /* Параметры рамки */
@@ -132,4 +143,27 @@ body {
     opacity: 0.9;
     font-weight: bold;
     font-size: 12px;
+}
+
+#wide_menu ul li .submenu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 1px;
+    z-index: 2;
+    border: none;
+    width: 200px;
+}
+
+#wide_menu ul li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+}
+
+.submenu li a {
+    border: 1px solid;
+}
+
+#wide_menu ul li .submenu li {
+    float: none;
 }

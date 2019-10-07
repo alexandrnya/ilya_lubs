@@ -3,12 +3,13 @@ body {
     color: #fff;
 }
 
+#wide_menu ul li .submenu li,
 #wide_menu ul {
-    background:#863e00; /*добавляем фон всему меню*/
+    background: #863e00; /*добавляем фон всему меню*/
 }
 
 #wide_menu a {
-    color:#fff; /*меняем цвет ссылок*/
+    color: #fff; /*меняем цвет ссылок*/
     border-color: #F36262;
 
 }
@@ -26,12 +27,12 @@ body {
 
 #left_block .selected,
 #left_block ul li:hover,
-#left_block a:hover{
+#left_block a:hover {
     color: #fffdfe;
 }
 
 #footer {
-    color:#fff; /*меняем цвет ссылок*/
+    color: #fff; /*меняем цвет ссылок*/
     background: #863e00;
 }
 
@@ -40,13 +41,13 @@ body {
     border-color: #863e00;
 }
 
-#switch_theme div{
+#switch_theme div {
     background: #863e00;
     color: #fff;
     border-color: #fff;
 }
 
 .hint:hover::after {
-    color:#fff;
-    background:#863e00;
+    color: #fff;
+    background: #863e00;
 }
