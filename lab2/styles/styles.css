@@ -105,3 +105,20 @@ body {
     cursor: pointer;
     z-index: 1000;
 }
+
+/*Всплывающая подсказка*/
+.hint {
+    position: relative;
+}
+.hint:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 0; top: 100%; /* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid black; /* Параметры рамки */
+    border-radius: 3px;
+    opacity: 0.9;
+    font-weight: bold;
+    font-size: 12px;
+}

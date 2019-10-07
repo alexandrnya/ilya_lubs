@@ -44,3 +44,8 @@
     border-color: black;
 }
 
+.hint:hover::after {
+    background: darkred;
+    color: #fff;
+}
+

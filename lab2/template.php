@@ -54,16 +54,16 @@ function htmlLeftBlock() {
                 <a href="rs.php">Обслуживание рабочих станций</a>
             </li>
             <li>
-                <a href="servers.php">Обслуживание серверов (Ненумерованный список)</a>
+                <a href="servers.php"  class="hint" data-title="Ненумерованный список">Обслуживание серверов</a>
             </li>
             <li>
-                <a href="virus.php">Вирусы: профилактика и лечение (Таблицы)</a>
+                <a href="virus.php" class="hint" data-title="Таблицы">Вирусы: профилактика и лечение</a>
             </li>
             <li>
                 <a href="remont.php">Ремонт компьютеров</a>
             </li>
             <li>
-                <a href="helpdesk.php">Удаленная техподдержка (Разные списки)</a>
+                <a href="helpdesk.php" class="hint" data-title="Разные списки">Удаленная техподдержка</a>
             </li>
         </ul>
     </div>

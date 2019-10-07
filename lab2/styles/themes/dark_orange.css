@@ -45,3 +45,8 @@ body {
     color: #fff;
     border-color: #fff;
 }
+
+.hint:hover::after {
+    color:#fff;
+    background:#863e00;
+}
