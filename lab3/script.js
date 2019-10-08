@@ -136,7 +136,17 @@ function getName() {
     }
 }
 
+function addEventClickExtra() {
+    var extraBlocks = document.querySelectorAll(".extra_info");
+    for (var key = 0, len = extraBlocks.length; key < len; key++) {
+        extraBlocks[key].querySelector(".extra_title").addEventListener("click", function (e) {
+            this.parentNode.querySelector(".extra_body").classList.toggle("hide");
+        });
+    }
+}
+
 window.onload = function () {
     selectedActiveMenu();
     getName();
+    addEventClickExtra();
 };

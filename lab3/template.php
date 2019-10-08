@@ -107,7 +107,7 @@ function htmlLeftBlock() {
                 <a href="remont.php">Ремонт компьютеров</a>
             </li>
             <li>
-                <a href="helpdesk.php" class="hint" data-title="Разные списки">Удаленная техподдержка</a>
+                <a href="helpdesk.php" class="hint" data-title="Разные списки и схлапывающиеся блоки">Удаленная техподдержка</a>
             </li>
         </ul>
     </div>

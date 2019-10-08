@@ -211,3 +211,22 @@ strong {
 .gallery-item {
     margin: 5px;
 }
+
+
+
+.extra_info {
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.extra_info .extra_title{
+    padding: 10px;
+}
+
+.extra_info .extra_title {
+    cursor: pointer;
+}
+
+.extra_info .hide {
+    display: none;
+}

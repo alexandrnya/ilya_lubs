@@ -2,7 +2,7 @@ body {
     background: #303030;
     color: #fff;
 }
-
+.extra_info,
 #wide_menu ul li .submenu li,
 #wide_menu ul {
     background: #863e00; /*добавляем фон всему меню*/
@@ -14,6 +14,7 @@ body {
 
 }
 
+.extra_info .extra_title:hover,
 #wide_menu .selected,
 #wide_menu a:hover {
     background: #303030;
@@ -32,10 +33,11 @@ body {
 }
 
 #footer {
-    color: #fff; /*меняем цвет ссылок*/
+    color: #fff;
     background: #863e00;
 }
 
+.extra_info,
 #wide_menu ul,
 #main_container {
     border-color: #863e00;

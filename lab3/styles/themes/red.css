@@ -1,14 +1,17 @@
+.extra_info,
 #wide_menu ul li .submenu li,
 #wide_menu ul {
     background: darkred; /*добавляем фон всему меню*/
 }
 
+.extra_info,
 #wide_menu a {
     color: #fff; /*меняем цвет ссылок*/
     border-color: #F36262;
 
 }
 
+.extra_info .extra_title:hover,
 #wide_menu .selected,
 #wide_menu a:hover {
     background: #D43737; /*добавляем эффект при наведении*/
@@ -30,10 +33,11 @@
 }
 
 #footer {
-    color: #fff; /*меняем цвет ссылок*/
+    color: #fff;
     background: darkred;
 }
 
+.extra_info,
 #wide_menu ul,
 #main_container {
     border-color: darkred;
