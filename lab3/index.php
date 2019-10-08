@@ -20,7 +20,10 @@ htmlLeftBlock(); ?>
             остановки бизнес процесса.
         </p>
         <p>Работа на предупреждение - наша главная задача.</p>
-        <img id="comp-iyxcx544imgimage" width="628px" height="352px"
-             src="img/987a63_16f40e9780f049e0a1030468f313981b_mv2.webp">
+
+        <a href="img/987a63_16f40e9780f049e0a1030468f313981b_mv2.webp"
+           data-lightbox="index-set" data-title=""><img
+                    src="img/987a63_16f40e9780f049e0a1030468f313981b_mv2.webp"
+                    alt=""/></a>
     </div>
 <? htmlFooter(); ?>
