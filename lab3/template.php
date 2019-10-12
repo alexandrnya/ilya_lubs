@@ -59,7 +59,7 @@ function createMenu()
     ?>
         <div style="clear: both"></div>
         <div id="footer">
-            Тут будет футер для всех страниц
+            +79994564589 2000 - 2019 гг. г. Красноярск, ул. Красноярская 777, оф 666
         </div>
     </div>
     <?htmlPopup()?>
