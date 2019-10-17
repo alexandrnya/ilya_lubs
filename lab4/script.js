@@ -11,8 +11,7 @@ function setCookie(name, value, options = {}) {
 
     options = {
         path: '/',
-        expires: {
-        },
+        expires: {},
         // при необходимости добавьте другие значения по умолчанию
         ...options
     };
@@ -42,7 +41,7 @@ function deleteCookie(name) {
 
 function createPopup() {
     var popup = document.querySelector("#popup");
-    if(!popup) {
+    if (!popup) {
         var popupCreate = document.createElement("div");
         popupCreate.className = "popup";
         popupCreate.id = "popup";
@@ -70,17 +69,17 @@ function saveName() {
 }
 
 function closePopup() {
-    document.querySelector("#popup").style.display='none';
+    document.querySelector("#popup").style.display = 'none';
 }
 
 function openPopup() {
-    document.querySelector("#popup").style.display='block';
+    document.querySelector("#popup").style.display = 'block';
 }
 
 function getSalute() {
     var name = getCookie("name");
     var salute = document.querySelector("div#salute");
-    if(name.length > 0) {
+    if (name.length > 0) {
         salute.innerHTML = "<strong>Привет, " + name + "</strong>";
     } else {
         salute.innerHTML = "<strong>Привет</strong>";
@@ -93,7 +92,7 @@ function changeTheme() {
         themeName1 = 'styles/themes/red.css',
         themeName2 = `styles/themes/dark_orange.css`;
 
-    if(themeCookie === themeName1 || !themeCookie) {
+    if (themeCookie === themeName1 || !themeCookie) {
         theme.setAttribute("href", themeName2);
         setCookie("theme", themeName2)
     } else {
@@ -106,10 +105,9 @@ function changeTheme() {
 function getAlert() {
     var name = getCookie("name");
     var mess = "";
-    if(name.length > 0) {
+    if (name.length > 0) {
         mess = name + ", вы покидаете текущий сайт и попадаете на сайт google.com";
-    }
-    else {
+    } else {
         mess = "Вы покидаете текущий сайт и попадаете на сайт google.com";
     }
     alert(mess);
@@ -118,8 +116,8 @@ function getAlert() {
 function selectedActiveMenu() {
     var location = window.location.href;
     as = document.querySelectorAll("a");
-    for(let key in as) {
-        if(as[key].href === location) {
+    for (let key in as) {
+        if (as[key].href === location) {
             as[key].classList.add("selected");
         }
     }
@@ -128,10 +126,9 @@ function selectedActiveMenu() {
 
 function getName() {
     var name = getCookie("name");
-    if(name.length === 0) {
+    if (name.length === 0) {
         openPopup();
-    }
-    else {
+    } else {
         getSalute();
     }
 }
@@ -145,8 +142,6 @@ function addEventClickExtra() {
     }
 }
 
-window.onload = function () {
-    selectedActiveMenu();
-    getName();
-    addEventClickExtra();
-};
+selectedActiveMenu();
+getName();
+addEventClickExtra();
