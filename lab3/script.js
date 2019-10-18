@@ -128,11 +128,11 @@ function selectedActiveMenu() {
 
 function getName() {
     var name = getCookie("name");
-    if(name.length === 0) {
-        openPopup();
+    if(name) {
+        getSalute();
     }
     else {
-        getSalute();
+        openPopup();
     }
 }
 
