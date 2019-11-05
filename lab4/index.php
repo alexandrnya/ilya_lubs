@@ -1,10 +1,11 @@
 <?php
-include "Classes\Template\Template.php";
+include "Classes/autoload.php";
 
+use DB\Users;
 use HTML\Template;
 
 $template = new Template(); ?>
-<?= $template->htmlHeader("Лабараторная №2"); ?>
+<?= $template->htmlHeader("Лабараторная №4"); ?>
 <?= $template->htmlLeftBlock(); ?>
     <div id="body">
         <h2>Самое Главное</h2>

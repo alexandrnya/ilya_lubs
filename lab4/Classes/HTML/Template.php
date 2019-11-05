@@ -5,42 +5,40 @@ namespace HTML;
 
 class Template
 {
-    private $pathToLab = "";
-
     // Ссылки относитльно корня.
-    private $styles = array(
-        array("href" => "styles/styles.css"),
-        array("href" => "../lib/lightbox/css/lightbox.min.css"),
-    );
-
-    private $scripts = array(
-        array("src" => "script.js"),
-//        array("src" => "../lib/lightbox/js/lightbox-plus-jquery.min.js"),
-    );
+    private $styles = [];
+    private $scripts = [];
 
     function __construct()
     {
-        $this->pathToLab = "/lab4/";
-        $this->styles[] =
+        $this->styles = array(
             array(
                 "id" => "theme",
                 "href" => "styles/themes/red.css",
-            );
+            ),
+            array("href" => "styles/styles.css"),
+            array("href" => "../lib/lightbox/css/lightbox.min.css"),);
+
+        $this->scripts = array(
+            array("src" => "script.js"),
+//        array("src" => "../lib/lightbox/js/lightbox-plus-jquery.min.js"),
+        );
     }
 
     function styleLinks()
     {
         $html = "";
         foreach ($this->styles as $style) {
-            $html .= "<link rel='stylesheet' id='" . $style["id"] . "' href='" . $this->pathToLab . $style["href"] . "'>";
+            $html .= "<link rel='stylesheet' id='" . $style["id"] . "' href='/" . PATH_TO_LAB . "/" . $style["href"] . "'>";
         }
         return $html;
     }
 
-    function JSLinks() {
+    function JSLinks()
+    {
         $html = "";
         foreach ($this->scripts as $script) {
-            $html .= "<script src='" . $this->pathToLab . $script["src"] . "'></script>";
+            $html .= "<script src='/" . PATH_TO_LAB . "/" . $script["src"] . "'></script>";
         }
         return $html;
     }
@@ -62,15 +60,23 @@ class Template
         $html = "
         <div id='wide_menu'>
             <ul>
-                <li><a href='../../index.php'>Главная</a></li>
-                <li><a href='../../about.php'>О Компании</a>
+                <li><a href='/" . PATH_TO_LAB . "/index.php'>Главная</a></li>
+                <li><a href='/" . PATH_TO_LAB . "/about.php'>О Компании</a>
                     <ul class='submenu'>
-                        <li><a href='../../galery.php'>Галерея</a></li>
+                        <li><a href='/" . PATH_TO_LAB . "/galery.php'>Галерея</a></li>
                         <li><a href='google'>второе сабменю</a></li>
                     </ul>
                 </li>
-                <li><a href='../../help247.php'>Удаленная поддержка '24/7'</a></li>
+                <li><a href='/" . PATH_TO_LAB . "/help247.php'>Удаленная поддержка '24/7'</a></li>
                 <li><a href='https://www.google.com' onclick='getAlert()'>google.com (Подтверждение)</a></li>
+                <li><a href='/" . PATH_TO_LAB . "/user/login.php'>Личный кабинет</a>
+                    <ul class='submenu'>"
+                .(
+                        $_SESSION["USER_ID"]?
+                            "<li><a href='/" . PATH_TO_LAB . "/user/logout.php'>Выйти</a></li>":
+                            "<li><a href='/" . PATH_TO_LAB . "/user/registration.php'>Регистрация</a></li>"
+                ) ."</ul>
+                </li>
             </ul>
         </div>";
         return $html;
@@ -145,19 +151,19 @@ class Template
             </div>
             <ul>
                 <li>
-                    <a href='rs.php'>Обслуживание рабочих станций</a>
+                    <a href='/" . PATH_TO_LAB . "/rs.php'>Обслуживание рабочих станций</a>
                 </li>
                 <li>
-                    <a href='servers.php' class='hint' data-title='Ненумерованный список'>Обслуживание серверов</a>
+                    <a href='/" . PATH_TO_LAB . "/servers.php' class='hint' data-title='Ненумерованный список'>Обслуживание серверов</a>
                 </li>
                 <li>
-                    <a href='virus.php' class='hint' data-title='Таблицы'>Вирусы: профилактика и лечение</a>
+                    <a href='/" . PATH_TO_LAB . "/virus.php' class='hint' data-title='Таблицы'>Вирусы: профилактика и лечение</a>
                 </li>
                 <li>
-                    <a href='remont.php'>Ремонт компьютеров</a>
+                    <a href='/" . PATH_TO_LAB . "/remont.php'>Ремонт компьютеров</a>
                 </li>
                 <li>
-                    <a href='helpdesk.php' class='hint' data-title='Разные списки и схлапывающиеся блоки'>Удаленная
+                    <a href='/" . PATH_TO_LAB . "/helpdesk.php' class='hint' data-title='Разные списки и схлапывающиеся блоки'>Удаленная
                         техподдержка</a>
                 </li>
             </ul>

@@ -89,8 +89,8 @@ function getSalute() {
 function changeTheme() {
     const theme = document.querySelector("link#theme");
     var themeCookie = getCookie("theme"),
-        themeName1 = 'styles/themes/red.css',
-        themeName2 = `styles/themes/dark_orange.css`;
+        themeName1 = '/lab4/styles/themes/red.css',
+        themeName2 = `/lab4/styles/themes/dark_orange.css`;
 
     if (themeCookie === themeName1 || !themeCookie) {
         theme.setAttribute("href", themeName2);
