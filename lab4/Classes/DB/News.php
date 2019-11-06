@@ -25,7 +25,7 @@ class News
 
     public function addNews($arNews) {
         if($users_id = Users::getCurrentUser()) {
-            $res = $this->DB->query("INSERT INTO news(users_id, news_detail_text, news_view_text, news_detail_picture, news_view_picture) VALUES ($users_id, '$arNews[DETAIL]', '$arNews[VIEW]', '$arNews[DETAIL_PICTURE]', '$arNews[VIEW_PICTURE]')");
+            $res = $this->DB->query("INSERT INTO news(users_id, news_detail_text, news_view_text, news_detail_picture, news_view_picture) VALUES ($users_id, '$arNews[DETAIL_TEXT]', '$arNews[VIEW_TEXT]', '$arNews[DETAIL_PICTURE]', '$arNews[VIEW_PICTURE]')");
             return $this->DB->insert_id;
         }
         else return false;

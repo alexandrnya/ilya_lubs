@@ -14,6 +14,6 @@ $template = new Template(); ?>
 <?= $template->htmlLeftBlock(); ?>
     <div id="body">
 
-        <a href=""></a>
+        <a href="/<?=PATH_TO_LAB?>/news/addNews.php">Добавить новость</a>
     </div>
 <?= $template->htmlFooter(); ?>
