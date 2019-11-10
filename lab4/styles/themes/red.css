@@ -54,3 +54,12 @@
     color: #fff;
 }
 
+.news_item a {
+    color: black;
+}
+
+.news_item .sign, .news_item h1 {
+    background: darkred;
+    color: #fff;
+}
+

@@ -13,8 +13,8 @@ if(!Users::checkLogin()) {
 
 if($_POST["ADD_NEWS"]) {
     $uploaddir = $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_TO_LAB . '/uploads/news/';
-    $uploadView = $uploaddir . Helper::translit(basename($_FILES['VIEW_PICTURE']['name']));
-    $uploadDetail = $_FILES['DETAIL_PICTURE']['name'] ? $uploaddir . Helper::translit(basename($_FILES['DETAIL_PICTURE']['name'])) : "";
+    $uploadView =  $_FILES['DETAIL_PICTURE']['name'] ? ($uploaddir . "view/". Helper::translit(basename($_FILES['VIEW_PICTURE']['name']))) : "";
+    $uploadDetail =  $_FILES['DETAIL_PICTURE']['name'] ? ($uploaddir . "detail/". Helper::translit(basename($_FILES['DETAIL_PICTURE']['name']))) : "";
     $uploated = true;
 
     if($_FILES['VIEW_PICTURE']['tmp_name'] || $_FILES['DETAIL_PICTURE']['tmp_name']) {
@@ -26,9 +26,9 @@ if($_POST["ADD_NEWS"]) {
     $arNews = array(
         "NAME" => $_POST["NAME"],
         "VIEW_TEXT" => $_POST["VIEW_TEXT"],
-        "VIEW_PICTURE" => $uploadView,
+        "VIEW_PICTURE" => str_replace($_SERVER["DOCUMENT_ROOT"],  "", $uploadView),
         "DETAIL_TEXT" => $_POST["DETAIL_TEXT"],
-        "DETAIL_PICTURE" => $uploadDetail,
+        "DETAIL_PICTURE" => str_replace($_SERVER["DOCUMENT_ROOT"],  "", $uploadDetail),
     );
     $newsObj->addNews($arNews);
 }

@@ -64,7 +64,7 @@ class Template
                 <li><a href='/" . PATH_TO_LAB . "/about.php'>О Компании</a>
                     <ul class='submenu'>
                         <li><a href='/" . PATH_TO_LAB . "/galery.php'>Галерея</a></li>
-                        <li><a href='google'>второе сабменю</a></li>
+                        <li><a href='/" . PATH_TO_LAB . "/news/list.php'>Новости</a></li>
                     </ul>
                 </li>
                 <li><a href='/" . PATH_TO_LAB . "/help247.php'>Удаленная поддержка '24/7'</a></li>
