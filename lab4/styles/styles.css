@@ -243,7 +243,9 @@ label .label_for_text {
 
 input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+textarea,
+select{
     width: 100%;
     padding: 3px 5px;
     box-shadow: 1px 1px 2px 0px;
@@ -255,6 +257,10 @@ input[type="submit"]
 {
     display: block;
     margin: 0 auto;
+}
+
+textarea {
+    min-height: 200px;
 }
 
 .news_item {

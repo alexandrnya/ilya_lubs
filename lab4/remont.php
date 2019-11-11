@@ -1,7 +1,10 @@
 <?php
-include "template.php";
-htmlHeader("Ремонт");
-htmlLeftBlock(); ?>
+use HTML\Template;
+
+include "Classes/autoload.php";
+$template = new Template();
+echo $template->htmlHeader("Ремонт");
+echo $template->htmlLeftBlock(); ?>
     <div id="body">
         <h2>Ремонт компьютеров</h2>
         <p>Как и любая техника, компьютеры требуют своевременного обслуживания. В противном случае неизбежны поломки.
@@ -54,4 +57,4 @@ htmlLeftBlock(); ?>
         </p>
     </div>
 
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>

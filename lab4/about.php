@@ -1,7 +1,11 @@
 <?php
-include "template.php";
-htmlHeader("Немного о нас");
-htmlLeftBlock(); ?>
+
+use HTML\Template;
+
+include "Classes/autoload.php";
+$template = new Template();
+echo $template->htmlHeader("Немного о нас");
+echo $template->htmlLeftBlock(); ?>
     <div id="body">
         <h2>Немного о нас</h2>
         <p>Наша компания образована в 2005 году.</p>
@@ -12,4 +16,4 @@ htmlLeftBlock(); ?>
             IT-отдела.</p>
         <p>Клиенты нашей компании годами работают с нами, благодаря нашей стабильности, знаниям, инновациям.</p>
     </div>
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>

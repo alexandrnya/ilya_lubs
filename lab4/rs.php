@@ -1,7 +1,10 @@
 <?php
-include "template.php";
-htmlHeader("Обслуживание рабочих станций");
-htmlLeftBlock(); ?>
+use HTML\Template;
+
+include "Classes/autoload.php";
+$template = new Template();
+echo $template->htmlHeader("Обслуживание рабочих станций");
+echo $template->htmlLeftBlock(); ?>
     <div id="body"><h1>Обслуживание рабочих станций</h1>
         <p>Каждая крупная фирма имеет большой парк рабочих станций, на которых
             трудятся офисные сотрудники. Но не каждый владелец бизнеса, основной профиль
@@ -55,4 +58,4 @@ htmlLeftBlock(); ?>
             только положительные отзывы с их стороны.</p>
         </div>
 
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>

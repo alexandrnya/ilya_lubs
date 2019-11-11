@@ -3,6 +3,9 @@
 
 namespace HTML;
 
+use DB\Themes;
+use DB\Users;
+
 class Template
 {
     // Ссылки относитльно корня.
@@ -11,10 +14,13 @@ class Template
 
     function __construct()
     {
+        $objUser = new Users();
+        $theme = $objUser->getTheme();
+
         $this->styles = array(
             array(
                 "id" => "theme",
-                "href" => "styles/themes/red.css",
+                "href" => $theme["THEMES_PATH"],
             ),
             array("href" => "styles/styles.css"),
             array("href" => "../lib/lightbox/css/lightbox.min.css"),);
@@ -77,6 +83,7 @@ class Template
                             "<li><a href='/" . PATH_TO_LAB . "/user/registration.php'>Регистрация</a></li>"
                 ) ."</ul>
                 </li>
+                <li><a href='/" . PATH_TO_LAB . "/forum/index.php'>Форум</a></li>
             </ul>
         </div>";
         return $html;
@@ -144,10 +151,10 @@ class Template
         $html = "
         <div id='left_block'>
             <div id='switch_theme'>
-                <div id='salute' onclick='createPopup()'><strong>Привет</strong></div>
+                <!--<div id='salute' onclick='createPopup()'><strong>Привет</strong></div>
                 <br/>
                 <br/>
-                <div onclick='changeTheme()'>Переключатель тем</div>
+                <div onclick='changeTheme()'>Переключатель тем</div>-->
             </div>
             <ul>
                 <li>

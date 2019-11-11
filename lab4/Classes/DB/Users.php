@@ -73,7 +73,7 @@ class Users
         $arUser["EMAIL"] = $this->ValidationEmail($arUser["EMAIL"]);
 
         if (empty($this->messages)) {
-            if ($this->DB->query("INSERT INTO users(users_login, users_email, users_password, users_first_name, users_last_name) VALUES('$arUser[LOGIN]', '$arUser[EMAIL]', '$arUser[PASSWORD]', '$arUser[FIRST_NAME]', '$arUser[LAST_NAME]')")) {
+            if ($this->DB->query("INSERT INTO users(users_login, users_email, users_password, users_first_name, users_last_name, themes_id) VALUES('$arUser[LOGIN]', '$arUser[EMAIL]', '$arUser[PASSWORD]', '$arUser[FIRST_NAME]', '$arUser[LAST_NAME], $arUser[THEME]')")) {
                 return $this->DB->insert_id;
             }
         }
@@ -103,16 +103,76 @@ class Users
         return $this->messages;
     }
 
-    public static function checkLogin() {
-        if($users_id = $_SESSION["USER_ID"]) {
+    public static function checkLogin()
+    {
+        if ($users_id = $_SESSION["USER_ID"]) {
             return true;
         }
         return false;
     }
 
-    public static function getCurrentUser() {
-        if($users_id = $_SESSION["USER_ID"]) {
+    public function getByLogin($login)
+    {
+        $res = $this->DB->query("SELECT USERS_ID, USERS_LOGIN, USERS_EMAIL, USERS_FIRST_NAME, USERS_LAST_NAME, THEMES_ID FROM users WHERE users_login = '$login'");
+        if ($res) {
+            $arUser = $res->fetch_assoc();
+            return $arUser;
+        }
+        return false;
+    }
+
+    public function getArCurrentUser()
+    {
+        $users_id = self::getCurrentUser();
+        $res = $this->DB->query("SELECT USERS_ID, USERS_LOGIN, USERS_EMAIL, USERS_FIRST_NAME, USERS_LAST_NAME, THEMES_ID FROM users WHERE users_id = $users_id");
+        if ($res) {
+            $arUser = $res->fetch_assoc();
+            return $arUser;
+        }
+        return false;
+    }
+
+    public static function getCurrentUser()
+    {
+        if ($users_id = $_SESSION["USER_ID"]) {
             return $users_id;
+        }
+        return false;
+    }
+
+    public function getTheme() {
+        $users_id = self::getCurrentUser();
+        $res = $this->DB->query("SELECT t.THEMES_PATH FROM users u LEFT JOIN themes t ON u.themes_id = t.themes_id WHERE u.users_id = $users_id");
+        if ($res) {
+            $theme = $res->fetch_assoc();
+        } else {
+            $theme = array("THEMES_PATH" => "styles/themes/red.css");
+        }
+        return $theme;
+    }
+
+    public function updateUser($arUser)
+    {
+        $arUser["LOGIN"] = $this->ValidationLogin($arUser["LOGIN"]);
+
+        if ($arUser["PASSWORD"] !== $arUser["CONFIRM_PASSWORD"]) {
+            $this->messages["PASSWORD"][] = "неверный повтор пароля";
+        }
+        $arUser["PASSWORD"] = $this->ValidationPassword($arUser["PASSWORD"]);
+
+        $arUser["EMAIL"] = $this->ValidationEmail($arUser["EMAIL"]);
+
+        if (empty($this->messages)) {
+            if ($this->DB->query("UPDATE users SET
+                 users_login = '$arUser[LOGIN]',
+                 users_email = '$arUser[EMAIL]',
+                 users_password = '$arUser[PASSWORD]', 
+                 users_first_name = '$arUser[FIRST_NAME]', 
+                 users_last_name = '$arUser[LAST_NAME]',
+                 themes_id = '$arUser[THEME]'")) {
+
+                return true;
+            }
         }
         return false;
     }

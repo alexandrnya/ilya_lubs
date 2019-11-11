@@ -1,7 +1,11 @@
 <?php
-include "template.php";
-htmlHeader("Удаленная поддержка 24х7");
-htmlLeftBlock(); ?>
+
+use HTML\Template;
+
+include "Classes/autoload.php";
+$template = new Template();
+echo $template->htmlHeader("Удаленная поддержка 24х7");
+echo $template->htmlLeftBlock(); ?>
     <div id="body">
         <h2>Удаленная поддержка 24х7</h2>
         
@@ -70,4 +74,4 @@ htmlLeftBlock(); ?>
             правильный выбор.</p>
     </div>
 
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>
