@@ -57,3 +57,12 @@ body {
 #header #info {
     color: black;
 }
+
+a {
+    color: #fff;
+}
+
+.news_item .sign {
+    background: #863e00;
+    color: #fff;
+}

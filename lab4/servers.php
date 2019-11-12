@@ -1,7 +1,11 @@
 <?php
-include "template.php";
-htmlHeader("Настройка серверов");
-htmlLeftBlock(); ?>
+
+use HTML\Template;
+
+include "Classes/autoload.php";
+$template = new Template();
+echo $template->htmlHeader("Настройка серверов");
+echo $template->htmlLeftBlock(); ?>
     <div id="body">
         <h1>Настройка серверов</h1>
         <h2>Мы предлагаем:</h2>
@@ -88,4 +92,4 @@ htmlLeftBlock(); ?>
         </ul>
     </div>
 
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>

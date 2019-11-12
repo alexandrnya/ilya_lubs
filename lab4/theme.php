@@ -1,8 +1,13 @@
 <?php
-include "template.php";
-htmlHeader("Лабараторная №2");
-htmlLeftBlock(); ?>
+include "Classes/autoload.php";
+
+use DB\Users;
+use HTML\Template;
+
+$template = new Template(); ?>
+<?= $template->htmlHeader("Лабараторная №4"); ?>
+<?= $template->htmlLeftBlock(); ?>
     <div id="body">
         <?="hello"?>
     </div>
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>

@@ -1,7 +1,11 @@
 <?php
-include "template.php";
-htmlHeader("Удаленная компьютерная помощь");
-htmlLeftBlock(); ?>
+
+use HTML\Template;
+
+include "Classes/autoload.php";
+$template = new Template();
+echo $template->htmlHeader("Удаленная компьютерная помощь");
+echo $template->htmlLeftBlock(); ?>
     <div id="body">
         <h2>Удаленная компьютерная помощь - быстро и эффективно</h2>
         <p>Сегодня ни один офис нельзя представить без наличия в нем компьютерной
@@ -101,4 +105,4 @@ htmlLeftBlock(); ?>
         <p>Выбирая нас, вы получаете надежного партнера, настроенного на долгосрочные
             отношения и заботящегося о безопасности вашей компьютерной системы.</p>
     </div>
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>

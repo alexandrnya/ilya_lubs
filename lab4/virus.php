@@ -1,7 +1,11 @@
 <?php
-include "template.php";
-htmlHeader("Компьютерные вирусы");
-htmlLeftBlock(); ?>
+
+use HTML\Template;
+
+include "Classes/autoload.php";
+$template = new Template();
+echo $template->htmlHeader("Компьютерные вирусы");
+echo $template->htmlLeftBlock(); ?>
     <div id="body">
         <h2>Компьютерные вирусы: лечение или профилактика?</h2>
         <p>Распространенные в глобальной сети интернет вирусы могут нанести серьезный вред компьютерной
@@ -130,4 +134,4 @@ htmlLeftBlock(); ?>
             </tr>
         </table>
     </div>
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>

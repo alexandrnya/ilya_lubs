@@ -1,7 +1,12 @@
 <?php
-include "template.php";
-htmlHeader("Галерея");
-htmlLeftBlock(); ?>
+
+include "Classes/autoload.php";
+
+use HTML\Template;
+
+$template = new Template(); ?>
+<?= $template->htmlHeader("Галерея"); ?>
+<?= $template->htmlLeftBlock(); ?>
     <div id="body">
         <h1>Набор из четырех изображений</h1>
         <div>
@@ -23,4 +28,4 @@ htmlLeftBlock(); ?>
             </a>
         </div>
     </div>
-<? htmlFooter(); ?>
+<?= $template->htmlFooter(); ?>
