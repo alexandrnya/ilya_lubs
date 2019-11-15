@@ -21,7 +21,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -36,7 +36,7 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACTIVE_TOPICS'			=> 'Активные темы',
 	'ANNOUNCEMENTS'			=> 'Объявления',
 
@@ -63,12 +63,12 @@ $lang = array_merge($lang, array(
 	'UNREAD_POSTS_HOT'		=> 'Непрочитанные сообщения [ Популярная тема ]',
 	'UNREAD_POSTS_LOCKED'	=> 'Непрочитанные сообщения [ Тема закрыта ]',
 
-	'NO_READ_ACCESS'		=> 'У вас нет доступа на чтение тем в этом форуме.',
-
+	'NO_READ_ACCESS'		=> 'У вас нет доступа для просмотра списка или чтения тем в этом форуме.',
+	'NO_FORUMS_IN_CATEGORY'	=> 'В этой категории нет форумов.',
 	'VIEW_FORUM'			=> 'Просмотр форума',
 	'VIEW_FORUM_TOPICS'		=> array(
 		1	=> '%d тема',
 		2	=> '%d темы',
 		3	=> '%d тем',
 	),
-));
+]);

@@ -21,7 +21,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -36,7 +36,7 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'APPROVE'								=> 'Одобрить',
 	'ATTACHMENT'						=> 'Вложение',
 	'ATTACHMENT_FUNCTIONALITY_DISABLED'	=> 'Функция вложений отключена.',
@@ -90,6 +90,7 @@ $lang = array_merge($lang, array(
 	'NO_UNREAD_POSTS'		=> 'В этой теме нет новых непрочитанных сообщений.',
 	'NO_VOTE_OPTION'		=> 'Необходимо указать вариант ответа при голосовании.',
 	'NO_VOTES'				=> 'Голосов нет',
+	'NO_AUTH_PRINT_TOPIC'	=> 'У вас нет доступа к печати тем.',
 
 	'POLL_ENDED_AT'			=> 'Опрос закончился %s',
 	'POLL_RUN_TILL'			=> 'Опрос проводится до %s',
@@ -125,4 +126,4 @@ $lang = array_merge($lang, array(
 	'VIEW_UNREAD_POST'		=> 'Первое новое сообщение',
 	'VOTE_SUBMITTED'		=> 'Спасибо, ваш голос учтён.',
 	'VOTE_CONVERTED'		=> 'Изменение голосов в сконвертированных опросах не поддерживается.',
-));
+]);

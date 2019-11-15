@@ -21,7 +21,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -36,7 +36,7 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_ATTACHMENT_SETTINGS_EXPLAIN'	=> 'Здесь вы можете настроить основные параметры вложений и связанных с ними специальных категорий.',
 	'ACP_EXTENSION_GROUPS_EXPLAIN'		=> 'Здесь вы можете добавлять, удалять и изменять группы расширений. Также здесь можно отключать определённые группы расширений, назначать на группы специальные категории, изменять режим загрузки вложений, а также указать значок, который будет отображаться перед вложением, принадлежащим определённой группе.',
 	'ACP_MANAGE_EXTENSIONS_EXPLAIN'		=> 'Здесь вы можете управлять разрешёнными расширениями. Для активации расширений посетите страницу «Группы расширений». Мы настоятельно рекомендуем не разрешать потенциально опасные расширения (такие, как <code>php</code>, <code>php3</code>, <code>php4</code>, <code>phtml</code>, <code>pl</code>, <code>cgi</code>, <code>py</code>, <code>rb</code>, <code>asp</code>, <code>aspx</code> и так далее…).',
@@ -70,9 +70,6 @@ $lang = array_merge($lang, array(
 
 	'CAT_FLASH_FILES'			=> 'Файлы Flash',
 	'CAT_IMAGES'				=> 'Рисунки',
-	'CAT_QUICKTIME_FILES'		=> 'Файлы Quicktime',
-	'CAT_RM_FILES'				=> 'Файлы RealMedia',
-	'CAT_WM_FILES'				=> 'Файлы Windows Media',
 	'CHECK_CONTENT'				=> 'Проверять вложения',
 	'CHECK_CONTENT_EXPLAIN'		=> 'Некоторые браузеры могут быть обмануты при определении MIME-типа загружаемых файлов. Включение данной опции гарантирует, что такие файлы, вероятнее всего, будут отклоняться во время загрузки.',
 	'CREATE_GROUP'				=> 'Создать группу',
@@ -105,9 +102,6 @@ $lang = array_merge($lang, array(
 	'EXT_GROUP_FLASH_FILES'			=> 'Файлы Flash',
 	'EXT_GROUP_IMAGES'				=> 'Изображения',
 	'EXT_GROUP_PLAIN_TEXT'			=> 'Текстовые файлы',
-	'EXT_GROUP_QUICKTIME_MEDIA'		=> 'Файлы Quicktime Media',
-	'EXT_GROUP_REAL_MEDIA'			=> 'Файлы Real Media',
-	'EXT_GROUP_WINDOWS_MEDIA'		=> 'Файлы Windows Media',
 
 	'FILES_GONE'			=> 'Некоторые вложения из выбранных для удаления не существуют. Возможно, они уже были удалены ранее. Существующие вложения успешно удалены.',
 	'FILES_STATS_WRONG'		=> 'Возможно, статистика вложений неверна и требует синхронизации. Правильные значения: количество вложений = %1$d, общий размер вложений = %2$s.<br />Нажмите %3$sздесь%4$s для синхронизации статистики вложений.',
@@ -117,8 +111,6 @@ $lang = array_merge($lang, array(
 
 	'IMAGE_LINK_SIZE'			=> 'Размеры рисунков для ссылки',
 	'IMAGE_LINK_SIZE_EXPLAIN'	=> 'Если рисунок больше указанных размеров, то вместо него будет отображена ссылка для загрузки этого рисунка. Введите размеры 0×0 для отключения этой возможности.',
-	'IMAGICK_PATH'				=> 'Путь к программе ImageMagick',
-	'IMAGICK_PATH_EXPLAIN'		=> 'Полный путь к программе Imagemagick. Например, <samp>/usr/bin/</samp>.',
 
 	'MAX_ATTACHMENTS'				=> 'Максимум вложений в одном сообщении',
 	'MAX_ATTACHMENTS_PM'			=> 'Максимум вложений в личном сообщении',
@@ -141,7 +133,6 @@ $lang = array_merge($lang, array(
 	'NO_EXT_GROUP_SPECIFIED'	=> 'Не указана группа расширений.',
 	'NO_FILE_CAT'				=> 'Нет',
 	'NO_IMAGE'					=> 'Без значка',
-	'NO_THUMBNAIL_SUPPORT'		=> 'Поддержка миниатюр отключена, поскольку не найдено доступной библиотеки GD или установленной программы Imagemagick.',
 	'NO_UPLOAD_DIR'				=> 'Указанная вами папка для загрузки файлов не существует.',
 	'NO_WRITE_UPLOAD'			=> 'Указанная вами папка для загрузки файлов недоступна для записи. Измените права доступа для этой папки, разрешив серверу запись в неё.',
 
@@ -153,7 +144,6 @@ $lang = array_merge($lang, array(
 	'REMOVE_DISALLOWED_IPS'			=> 'Удаление или удаление из исключённых <em>запрешённых</em> IP-адресов или узлов',
 	'RESYNC_FILES_STATS_CONFIRM'	=> 'Вы действительно хотите синхронизировать статистику вложений?',
 
-	'SEARCH_IMAGICK'				=> 'Найти ImageMagick',
 	'SECURE_ALLOW_DENY'				=> 'Список разрешённых и запрещённых',
 	'SECURE_ALLOW_DENY_EXPLAIN'		=> 'Изменение поведения по умолчанию списка разрешённых и запрещённых при включении безопасных загрузок на <strong>белый список</strong> (Разрешить) или на <strong>чёрный список</strong> (Запретить).',
 	'SECURE_DOWNLOADS'				=> 'Включить безопасные загрузки',
@@ -176,4 +166,4 @@ $lang = array_merge($lang, array(
 	'UPLOAD_DIR_EXPLAIN'			=> 'Примечание: если вы измените эту папку в то время, как в ней уже имеются загруженные файлы, то вам придётся вручную скопировать эти файлы в новую папку.',
 	'UPLOAD_ICON'					=> 'Значок вложения',
 	'UPLOAD_NOT_DIR'				=> 'Указанный путь для загрузки файлов не является папкой.',
-));
+]);

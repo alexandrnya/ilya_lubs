@@ -21,7 +21,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -37,7 +37,7 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 // Forum Admin
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'AUTO_PRUNE_DAYS'			=> 'Автоочистка по дате последнего сообщения',
 	'AUTO_PRUNE_DAYS_EXPLAIN'	=> 'Количество дней с последнего сообщения, по прошествии которых тема будет удалена.',
 	'AUTO_PRUNE_FREQ'			=> 'Частота автоматической очистки',
@@ -87,7 +87,7 @@ $lang = array_merge($lang, array(
 	'FORUM_DELETE_EXPLAIN'				=> 'Форма ниже позволяет вам удалить форум. Если в форуме разрешено создавать сообщения, вы можете решить, куда переместить все имеющиеся в нём темы (форумы).',
 	'FORUM_DELETED'						=> 'Форум успешно удалён.',
 	'FORUM_DESC'						=> 'Описание',
-	'FORUM_DESC_EXPLAIN'				=> 'Любая заданная здесь разметка будет отображена в этом же виде.',
+	'FORUM_DESC_EXPLAIN'				=> 'Любая заданная здесь разметка будет отображена в этом же виде. Если выбран тип форума «Категория», описание не будет отображено.',
 	'FORUM_EDIT_EXPLAIN'				=> 'Форма ниже позволяет вам настраивать этот форум. Учтите, что настройки модерирования и количества сообщений производятся в правах доступа к форумам для каждого отдельного пользователя или группы.',
 	'FORUM_IMAGE'						=> 'Значок форума',
 	'FORUM_IMAGE_EXPLAIN'				=> 'Путь относительно корневой папки phpBB к дополнительному изображению, ассоциированному с этим форумом.',
@@ -97,6 +97,7 @@ $lang = array_merge($lang, array(
 	'FORUM_LINK_TRACK_EXPLAIN'			=> 'Записывает количество щелчков по ссылке на форум.',
 	'FORUM_NAME'						=> 'Имя форума',
 	'FORUM_NAME_EMPTY'					=> 'Необходимо ввести имя этого форума.',
+	'FORUM_NAME_EMOJI'					=> 'Введено неправильное имя форума.<br>Следующие символы в имени не поддерживаются:<br>%s',
 	'FORUM_PARENT'						=> 'Родительский форум',
 	'FORUM_PASSWORD'					=> 'Пароль к форуму',
 	'FORUM_PASSWORD_CONFIRM'			=> 'Подтверждение пароля к форуму',
@@ -162,4 +163,4 @@ $lang = array_merge($lang, array(
 	'TYPE_LINK'			=> 'Ссылка',
 
 	'UNLOCKED'			=> 'Открыт',
-));
+]);

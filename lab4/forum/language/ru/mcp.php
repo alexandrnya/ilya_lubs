@@ -21,7 +21,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -36,7 +36,7 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACTION'				=> 'Действие',
 	'ACTION_NOTE'			=> 'Действие/Заметка',
 	'ADD_FEEDBACK'			=> 'Добавить заметку о пользователе',
@@ -137,6 +137,7 @@ $lang = array_merge($lang, array(
 	'LOCK_TOPICS_CONFIRM'		=> 'Вы уверены, что хотите закрыть все выбранные темы?',
 	'LOGS_CURRENT_TOPIC'		=> 'Просмотр логов темы:',
 	'LOGIN_EXPLAIN_MCP'			=> 'Вы должны войти для модерирования этого форума.',
+	'LOGVIEW_VIEWPOST'			=> 'Просмотреть сообщение',
 	'LOGVIEW_VIEWTOPIC'			=> 'Просмотреть тему',
 	'LOGVIEW_VIEWLOGS'			=> 'Просмотреть лог темы',
 	'LOGVIEW_VIEWFORUM'			=> 'Просмотреть форум',
@@ -436,4 +437,4 @@ $lang = array_merge($lang, array(
 			'OTHER'		=> 'Причина обжалования не относится ни к одной из перечисленных, используйте поле дополнительной информации.',
 		),
 	),
-));
+]);

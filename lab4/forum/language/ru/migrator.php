@@ -21,7 +21,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -36,7 +36,7 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'CONFIG_NOT_EXIST'					=> 'Параметр конфигурации «%s» не существует.',
 
 	'GROUP_NOT_EXIST'					=> 'Группа «%s» не существует.',
@@ -48,10 +48,18 @@ $lang = array_merge($lang, array(
 	'MIGRATION_EFFECTIVELY_INSTALLED'	=> 'Обновление уже было выполнено (пропущено): %s',
 	'MIGRATION_EXCEPTION_ERROR'			=> 'В процессе обновления произошла ошибка, которая вызвала исключение. Изменения, произведенные до появления ошибки, были отменены. Тем не менее, рекомендуется проверить конференцию на отсутствие ошибок в работе.',
 	'MIGRATION_NOT_FULFILLABLE'			=> 'Невозможно выполнить обновление «%1$s», пропущено обновление «%2$s».',
+	'MIGRATION_NOT_INSTALLED'			=> 'Обновление «%s» не установлено.',
 	'MIGRATION_NOT_VALID'				=> '%s не является корректным обновлением.',
 	'MIGRATION_SCHEMA_DONE'				=> 'Обновлена схема: %1$s; Время: %2$.2f секунд',
 	'MIGRATION_SCHEMA_IN_PROGRESS'		=> 'Установка схемы: %1$s; Время: %2$.2f секунд',
 	'MIGRATION_SCHEMA_RUNNING'			=> 'Обновление схемы: %s.',
+
+	'MIGRATION_REVERT_DATA_DONE'		=> 'Отменено обновление данных: %1$s; Time: %2$.2f секунд',
+	'MIGRATION_REVERT_DATA_IN_PROGRESS'	=> 'Отмена обновления данных: %1$s; Time: %2$.2f секунд',
+	'MIGRATION_REVERT_DATA_RUNNING'		=> 'Отмена обновления данных: %s.',
+	'MIGRATION_REVERT_SCHEMA_DONE'		=> 'Отменено обновление схемы: %1$s; Time: %2$.2f секунд',
+	'MIGRATION_REVERT_SCHEMA_IN_PROGRESS'	=> 'Отмена обновления схемы: %1$s; Time: %2$.2f seconds',
+	'MIGRATION_REVERT_SCHEMA_RUNNING'	=> 'Отмена обновления схемы: %s.',
 
 	'MIGRATION_INVALID_DATA_MISSING_CONDITION'		=> 'Файл обновления содержит ошибки. Обработчик оператора if не смог найти условие.',
 	'MIGRATION_INVALID_DATA_MISSING_STEP'			=> 'Файл обновления содержит ошибки. Обработчик оператора if не смог обнаружить корректный запуск шага обновления.',
@@ -70,4 +78,4 @@ $lang = array_merge($lang, array(
 	'PERMISSION_NOT_EXIST'				=> 'Право доступа «%s» не существует.',
 
 	'ROLE_NOT_EXIST'					=> 'Роль «%s» в системе прав доступа не существует.',
-));
+]);

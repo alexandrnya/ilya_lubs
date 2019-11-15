@@ -21,7 +21,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -40,7 +40,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'TRANSLATION_INFO'	=> '<a href=\'http://www.phpbbguru.net/\'>Русская поддержка phpBB</a>',
 	'DIRECTION'			=> 'ltr',
 	'DATE_FORMAT'		=> '|d.m.Y|',	// 01 Jan 2007 (with Relative days enabled)
@@ -48,7 +48,7 @@ $lang = array_merge($lang, array(
 	'USER_LANG'			=> 'ru',
 
 	// You can define different rules for the determination of plural forms here.
-	// See http://wiki.phpbb.com/Plural_Rules for more information
+	// See https://area51.phpbb.com/docs/dev/32x/language/plurals.html for more information
 	// or ask the translation manager for help.
 	// Rule #7 Families: Slavic (Bosnian, Croatian, Serbian, Russian, Ukrainian)
 	// 0 can be handled special case. If you add a key 0 to your array, that will be used 
@@ -68,7 +68,6 @@ $lang = array_merge($lang, array(
 
 	'ACCOUNT_ALREADY_ACTIVATED'		=> 'Ваша учётная запись уже была активирована.',
 	'ACCOUNT_DEACTIVATED'			=> 'Ваша учётная запись была отключена вручную и может быть вновь активирована только администратором конференции.',
-	'ACCOUNT_NOT_ACTIVATED'			=> 'Ваша учётная запись ещё не активирована.',
 	'ACP'							=> 'Администраторский раздел',
 	'ACP_SHORT'						=> 'Администрировать',
 	'ACTIVE'						=> 'активен',
@@ -87,8 +86,9 @@ $lang = array_merge($lang, array(
 	'ALL_FORUMS'					=> 'Все форумы',
 	'ALL_MESSAGES'					=> 'Все сообщения',
 	'ALL_POSTS'						=> 'Все сообщения',
-	'ALL_TIMES'						=> 'Часовой пояс: <abbr title="%2$s">%1$s</abbr>',
+	'ALL_TIMES'						=> 'Часовой пояс: <span title="%2$s">%1$s</span>',
 	'ALL_TOPICS'					=> 'Все темы',
+	'ALT_TEXT'						=> 'Текст для всплывающей подсказки',
 	'AND'							=> 'и',
 	'ARE_WATCHING_FORUM'			=> 'Вы подписаны на уведомления о новых сообщениях в этом форуме.',
 	'ARE_WATCHING_TOPIC'			=> 'Вы подписаны на уведомления о новых сообщениях в этой теме.',
@@ -97,12 +97,14 @@ $lang = array_merge($lang, array(
 	'ATTACHED_IMAGE_NOT_IMAGE'		=> 'Вы попытались отправить недопустимый тип файла изображения.',
 	'AUTHOR'						=> 'Автор',
 	'AUTH_NO_PROFILE_CREATED'		=> 'Не удалось создать профиль пользователя.',
+	'AUTH_PROVIDER_OAUTH_ERROR_ALREADY_LINKED'				=> 'Данный внешний сервис аутентификации уже привязан к другой учетной записи конференции.',
 	'AUTH_PROVIDER_OAUTH_ERROR_INVALID_ENTRY'				=> 'Неверная запись в базу данных.',
 	'AUTH_PROVIDER_OAUTH_ERROR_INVALID_SERVICE_TYPE'		=> 'Для обработчика сервиса oAuth предоставлен неверный тип сервиса.',
 	'AUTH_PROVIDER_OAUTH_ERROR_SERVICE_NOT_CREATED'			=> 'Сервис OAuth не создан',
 	'AUTH_PROVIDER_OAUTH_SERVICE_BITLY'						=> 'Bitly',
 	'AUTH_PROVIDER_OAUTH_SERVICE_FACEBOOK'					=> 'Facebook',
 	'AUTH_PROVIDER_OAUTH_SERVICE_GOOGLE'					=> 'Google',
+	'AUTH_PROVIDER_OAUTH_SERVICE_TWITTER'					=> 'Twitter',
 	'AUTH_PROVIDER_OAUTH_TOKEN_ERROR_NOT_STORED'			=> 'Пакет данных OAuth не сохранён.',
 	'AUTH_PROVIDER_OAUTH_TOKEN_ERROR_INCORRECTLY_STORED'	=> 'Пакет данных OAuth некорректно сохранён.',
 	'AVATAR_DISALLOWED_CONTENT'		=> 'Закачка была отклонена, так как вложение было определено как возможная атака.',
@@ -111,11 +113,13 @@ $lang = array_merge($lang, array(
 	'AVATAR_EMPTY_FILEUPLOAD'		=> 'Загруженный файл аватары пуст.',
 	'AVATAR_INVALID_FILENAME'		=> '%s является недопустимым именем файла.',
 	'AVATAR_NOT_UPLOADED'			=> 'Загрузка аватары не удалась.',
+	'AVATAR_NO_TEMP_DIR'			=> 'Временная папка не найдена или недоступна для записи.',
 	'AVATAR_NO_SIZE'				=> 'Не удалось определить размеры указанной аватары. Пожалуйста, введите их вручную.',
 	'AVATAR_PARTIAL_UPLOAD'			=> 'Указанный файл загружен только частично',
 	'AVATAR_PHP_SIZE_NA'			=> 'Слишком большой размер файла аватары.<br />Не удалось определить максимальный размер, установленный в php.ini.',
 	'AVATAR_PHP_SIZE_OVERRUN'		=> 'Слишком большой размер файла аватары. Максимально допустимый размер — %1$d %2$s.<br />Примечание: это ограничение установлено в файле php.ini и не может быть превышено.',
 	'AVATAR_REMOTE_UPLOAD_TIMEOUT'		=> 'Указанная аватара не может быть загружена из-за превышения времени ожидания запроса.',
+	'AVATAR_PHP_UPLOAD_STOPPED'		=> 'Загрузка файла остановлена одним из модулей PHP.',
 	'AVATAR_URL_INVALID'			=> 'Указанный адрес аватары недопустим.',
 	'AVATAR_URL_NOT_FOUND'			=> 'Указанный файл аватары не найден.',
 	'AVATAR_WRONG_FILESIZE'			=> 'Размер файла аватары должен находиться в диапазоне от 0 до %1$d %2$s.',
@@ -141,8 +145,10 @@ $lang = array_merge($lang, array(
 		2	=> 'Сейчас этот форум просматривают: %2$s и %1$d гостя',
 		3	=> 'Сейчас этот форум просматривают: %2$s и %1$d гостей',
 	),
+	'BUTTON_DELETE'         => 'Удалить',
 	'BUTTON_EDIT'			=> 'Правка',
 	'BUTTON_FORUM_LOCKED'	=> 'Закрыто',
+	'BUTTON_INFORMATION'    => 'Информация',
 	'BUTTON_NEW_TOPIC'		=> 'Новая тема',
 	'BUTTON_PM'				=> 'ЛС',
 	'BUTTON_PM_FORWARD'		=> 'Переслать',
@@ -151,7 +157,9 @@ $lang = array_merge($lang, array(
 	'BUTTON_PM_REPLY_ALL'	=> 'Ответить всем',
 	'BUTTON_POST_REPLY'		=> 'Ответить',
 	'BUTTON_QUOTE'			=> 'Цитата',
+	'BUTTON_REPORT'         => 'Жалоба',
 	'BUTTON_TOPIC_LOCKED'	=> 'Закрыто',
+	'BUTTON_WARN'           => 'Предупредить',
 	'BYTES'					=> 'байт',
 	'BYTES_SHORT'			=> 'Б',
 
@@ -183,6 +191,10 @@ $lang = array_merge($lang, array(
 	'CONTACT'				=> 'Контактная информация',
 	'CONTACT_USER'			=> 'Контактная информация пользователя %s',
 	'CONTACT_US'			=> 'Связаться с администрацией',
+	'COOKIE_CONSENT_INFO'	=> 'Подробнее',
+	'COOKIE_CONSENT_MSG'	=> 'Этот сайт использует cookies для обеспечения своей корректной работы.',
+	'COOKIE_CONSENT_OK'		=> 'Согласен',
+	'COOKIE_CONSENT_HREF'	=> 'http://cookiesandyou.com',
 	'COOKIES_DELETED'		=> 'Все cookies, установленные конференцией, успешно удалены.',
 	'CURRENT_TIME'			=> 'Текущее время: %s',
 
@@ -190,7 +202,7 @@ $lang = array_merge($lang, array(
 	'DAYS'					=> 'дней',
 	'DELETE'				=> 'Удалить',
 	'DELETE_ALL'			=> 'Удалить все',
-	'DELETE_COOKIES'		=> 'Удалить cookies конференции',
+	'DELETE_COOKIES'		=> 'Удалить cookies',
 	'DELETE_MARKED'			=> 'Удалить отмеченные',
 	'DELETE_POST'			=> 'Удалить сообщение',
 	'DELIMITER'				=> 'Разделитель',
@@ -239,6 +251,7 @@ $lang = array_merge($lang, array(
 	'FACEBOOK'				=> 'Facebook',
 	'FAQ'					=> 'FAQ',
 	'FAQ_EXPLAIN'			=> 'Часто задаваемые вопросы',
+	'FEATURE_NOT_AVAILABLE' => 'Запрашиваемая функция недоступна на этой конференции.',
 	'FILENAME'				=> 'Имя файла',
 	'FILESIZE'				=> 'Размер файла',
 	'FILEDATE'				=> 'Дата создания файла',
@@ -350,11 +363,11 @@ $lang = array_merge($lang, array(
 	'INACTIVE'					=> 'Неактивен',
 	'INDEX'						=> 'Главная страница',
 	'INFORMATION'				=> 'Информация',
-	'INSECURE_REDIRECT'      => 'Попытка перенаправления на потенциально опасный сайт.',
+	'INSECURE_REDIRECT'			=> 'Попытка перенаправления на потенциально опасный сайт.',
 	'INTERESTS'					=> 'Интересы',
 	'INVALID_DIGEST_CHALLENGE'	=> 'Неверный запрос аутентификации.',
 	'INVALID_EMAIL_LOG'			=> 'Возможно, введён неверный адрес email: <strong>%s</strong>',
-	'INVALID_FEED_ATTACHMENTS'	=> 'Выбранный канал новостей пытается отобразить вложение с неверными органичениями.',
+	'INVALID_FEED_ATTACHMENTS'	=> 'Выбранный канал новостей использовал неверные параметры для отображения вложений.',
 	'INVALID_PLURAL_RULE'		=> 'Выбрано неверное правило для множественного числа. Правильными являются целые числа между 0 и 15.',
 	'IP'						=> 'IP',
 	'IP_BLACKLISTED'			=> 'Ваш IP-адрес %1$s был внесён в черный список и заблокирован. Для получения дополнительной информации перейдите по ссылке <a href="%2$s">%2$s</a>.',
@@ -468,8 +481,9 @@ $lang = array_merge($lang, array(
 		3	=> '<strong>Ответ</strong> от пользователей %1$s в теме, находящейся у Вас в закладках:',
 	),
 	'NOTIFICATION_FORUM'				=> '<em>Форум:</em> %1$s',
-	'NOTIFICATION_GROUP_REQUEST'    => '<strong>Запрос</strong> от пользователя %1$s на вступление в группу %2$s.',
+	'NOTIFICATION_GROUP_REQUEST'		=> '<strong>Запрос</strong> от пользователя %1$s на вступление в группу %2$s.',
 	'NOTIFICATION_GROUP_REQUEST_APPROVED'  => '<strong>Одобрен запрос</strong> на вступление в группу %1$s.',
+	'NOTIFICATION_METHOD_INVALID'		=> 'Метод «%s» не связан с каким-либо действующим методом уведомления.',
 	'NOTIFICATION_PM'					=> '<strong>Личное сообщение</strong> от пользователя %1$s:',
 	'NOTIFICATION_POST'					=> array(
 		1	=> '<strong>Ответ</strong> от пользователя %1$s в теме:',
@@ -493,7 +507,7 @@ $lang = array_merge($lang, array(
 	'NOTIFICATION_TOPIC_APPROVED'		=> '<strong>Тема одобрена</strong>:',
 	'NOTIFICATION_TOPIC_DISAPPROVED'	=> '<strong>Тема отклонена</strong>:',
 	'NOTIFICATION_TOPIC_IN_QUEUE'		=> '<strong>Ожидает одобрения</strong> тема, созданная пользователем %1$s:',
-	'NOTIFICATION_TYPE_NOT_EXIST'    => 'Тип уведомления «%s» отсутствует в файловой системе.',
+	'NOTIFICATION_TYPE_NOT_EXIST'		=> 'Тип уведомления «%s» отсутствует в файловой системе.',
 	'NOTIFICATION_ADMIN_ACTIVATE_USER'	=> '<strong>Ожидает активации</strong> деактивированный или новый пользователь: «%1$s»',
 	// Used in conjuction with NOTIFICATION_BOOKMARK and NOTIFICATION_POST.
 	'NOTIFICATION_MANY_OTHERS'			=> 'других',
@@ -532,7 +546,8 @@ $lang = array_merge($lang, array(
 	'NO_POSTS_TIME_FRAME'		=> 'В теме нет сообщений за выбранный период времени.',
 	'NO_FEED_ENABLED'			=> 'Каналы новостей недоступны на этой конференции.',
 	'NO_FEED'					=> 'Запрашиваемый канал новостей недоступен.',
-	'NO_STYLE_DATA'        => 'Не удалось получить данные о стиле',
+	'NO_STYLE_DATA'				=> 'Не удалось получить данные о стиле',
+	'NO_STYLE_CFG'				=> 'Не удалось загрузить файл конфигурации для стиля: %s',
 	'NO_SUBJECT'				=> 'Не указана тема',								// Used for posts having no subject defined but displayed within management pages.
 	'NO_SUCH_SEARCH_MODULE'		=> 'Указанный поисковый механизм отсутствует.',
 	'NO_SUPPORTED_AUTH_METHODS'	=> 'Метод аутентификации не поддерживается.',
@@ -577,6 +592,7 @@ $lang = array_merge($lang, array(
 	),
 	'OPTIONS'					=> 'Настройки',
 
+	'PAGE_NOT_FOUND'		=> 'Запрошенная страница не найдена.',
 	'PAGE_OF'				=> 'Страница <strong>%1$d</strong> из <strong>%2$d</strong>',
 	'PAGE_TITLE_NUMBER'		=> 'Страница %s',
 	'PASSWORD'				=> 'Пароль',
@@ -586,7 +602,6 @@ $lang = array_merge($lang, array(
 		2	=> '%d пикселя',
 		3	=> '%d пикселей',
 	),
-	'PLAY_QUICKTIME_FILE'	=> 'Воспроизвести файл QuickTime',
 	'PLEASE_WAIT'			=> 'Пожалуйста, подождите.',
 	'PM'					=> 'Личное сообщение',
 	'PM_REPORTED'			=> 'Нажмите для просмотра жалобы',
@@ -620,12 +635,13 @@ $lang = array_merge($lang, array(
 	'POST_TIME'				=> 'Время размещения',
 	'POST_TOPIC'			=> 'Новая тема',
 	'POST_UNAPPROVED_ACTION'	=> 'Сообщение ожидает проверки:',
-	'POST_UNAPPROVED'		=> 'Сообщение ещё не было одобрено.',
+	'POST_UNAPPROVED'		=> 'Сообщение одобрено.',
 	'POWERED_BY'			=> 'Создано на основе %s',
 	'PREVIEW'				=> 'Предпросмотр',
 	'PREVIOUS'				=> 'Пред.',		// Used in pagination
 	'PREVIOUS_STEP'			=> 'Назад',
 	'PRIVACY'				=> 'Соглашение о конфиденциальности',
+	'PRIVACY_LINK'			=> 'Конфиденциальность',
 	'PRIVATE_MESSAGE'		=> 'Личное сообщение',
 	'PRIVATE_MESSAGES'		=> 'Личные сообщения',
 	'PRIVATE_MESSAGING'		=> 'Личные сообщения',
@@ -725,11 +741,14 @@ $lang = array_merge($lang, array(
 	'SKIP'						=> 'Пропустить',
 	'SKYPE'						=> 'Skype',
 	'SMTP_NO_AUTH_SUPPORT'		=> 'SMTP-сервер не поддерживает аутентификацию.',
-	'SORRY_AUTH_READ'			=> 'Вы не авторизованы для чтения этого форума.',
+	'SORRY_AUTH_READ'			=> 'Вы не авторизованы для чтения данного форума.',
+	'SORRY_AUTH_READ_TOPIC'		=> 'Вы не авторизованы для чтения данной темы.',
 	'SORRY_AUTH_VIEW_ATTACH'	=> 'Вы не авторизованы для скачивания этого вложения.',
 	'SORT_BY'					=> 'Поле сортировки',
+	'SORT_DIRECTION'			=> 'Порядок',
 	'SORT_JOINED'				=> 'Дата регистрации',
 	'SORT_LOCATION'				=> 'Откуда',
+	'SORT_OPTIONS'				=> 'Настройки отображения и сортировки',
 	'SORT_RANK'					=> 'Звание',
 	'SORT_POSTS'				=> 'Сообщения',
 	'SORT_TOPIC_TITLE'			=> 'Название темы',
@@ -749,6 +768,7 @@ $lang = array_merge($lang, array(
 	'SUBMIT'					=> 'Отправить',
 
 	'TB'				=> 'ТБ',
+	'TERMS_LINK'		=> 'Правила',
 	'TERMS_USE'			=> 'Общие правила',
 	'TEST_CONNECTION'	=> 'Проверить подключение',
 	'THE_TEAM'			=> 'Наша команда',
@@ -797,6 +817,10 @@ $lang = array_merge($lang, array(
 	'TOPIC_REVIEW'		=> 'Обзор темы',
 	'TOPIC_TITLE'		=> 'Название темы',
 	'TOPIC_UNAPPROVED'	=> 'Данная тема не была одобрена.',
+	'TOPIC_UNAPPROVED_FORUM'	=> array(
+		1	=> 'Имеется тема, ожидающая одобрения',
+		2	=> 'Имеются темы, ожидающие одобрения',
+	),
 	'TOPIC_DELETED'		=> 'Данная тема была удалена.',
 	'TOTAL_ATTACHMENTS'	=> 'Вложения',
 	'TOTAL_LOGS'		=> array(
@@ -860,7 +884,7 @@ $lang = array_merge($lang, array(
 	'USERS'					=> 'Пользователи',
 	'USE_PERMISSIONS'		=> 'Проверить права пользователя',
 
-	'USER_NEW_PERMISSION_DISALLOWED'	=> 'Вам не разрешено использовать данную возможность. Возможно, вы недавно зарегистрировались на конференции или вам необходимо активнее участвовать в обсуждениях, чтобы получить такое право.',
+	'USER_NEW_PERMISSION_DISALLOWED'	=> 'Вам не разрешено использовать данную возможность. Возможно, вы недавно зарегистрировались на конференции или вам необходимо проявить больше активности в обсуждениях, чтобы получить такое право.',
 
 	'VARIANT_DATE_SEPARATOR'	=> ' / ',	// Used in date format dropdown, eg: "Today, 13:37 / 01 Jan 2007, 13:37" ... to join a relative date with calendar date
 	'VIEWED'					=> 'Просмотров:',
@@ -910,10 +934,9 @@ $lang = array_merge($lang, array(
 	'WEBSITE'			=> 'Сайт',
 	'WHOIS'				=> 'Информация об IP-адресе',
 	'WHO_IS_ONLINE'		=> 'Кто сейчас на конференции',
-	'WLM'				=> 'WLM',
 	'WRONG_PASSWORD'	=> 'Вы ввели неверный пароль.',
 
-	'WRONG_DATA_COLOUR'      => 'Введено неверное значение цвета.',
+	'WRONG_DATA_COLOUR'			=> 'Введено неверное значение цвета.',
 	'WRONG_DATA_JABBER'			=> 'Введённое имя не является правильным именем Jabber.',
 	'WRONG_DATA_LANG'			=> 'Указан неправильный язык.',
 	'WRONG_DATA_POST_SD'		=> 'Выбран неверный метод сортировки сообщений.',
@@ -986,7 +1009,7 @@ $lang = array_merge($lang, array(
 	// Timezones can be translated. We use this for the Etc/GMT timezones here,
 	// because they are named invers to their offset.
 	'timezones'		=> array(
-		'UTC'      				=> 'UTC',
+		'UTC'					=> 'UTC',
 		'UTC_OFFSET'			=> 'UTC%1$s',
 		'UTC_OFFSET_CURRENT'	=> 'UTC%1$s - %2$s',
 
@@ -1461,4 +1484,4 @@ $lang = array_merge($lang, array(
 	// Translators should change this if a the usual date format is different
 	'default_dateformat'	=>'|d M Y|, H:i', // Сегодня, 13:37 / 01 Янв 2007, 13:37
 
-));
+]);
