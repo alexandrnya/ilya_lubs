@@ -73,7 +73,7 @@ class Users
         $arUser["EMAIL"] = $this->ValidationEmail($arUser["EMAIL"]);
 
         if (empty($this->messages)) {
-            if ($this->DB->query("INSERT INTO users(users_login, users_email, users_password, users_first_name, users_last_name, themes_id) VALUES('$arUser[LOGIN]', '$arUser[EMAIL]', '$arUser[PASSWORD]', '$arUser[FIRST_NAME]', '$arUser[LAST_NAME], $arUser[THEME]')")) {
+            if ($this->DB->query("INSERT INTO users(users_login, users_email, users_password, users_first_name, users_last_name, themes_id) VALUE('$arUser[LOGIN]', '$arUser[EMAIL]', '$arUser[PASSWORD]', '$arUser[FIRST_NAME]', '$arUser[LAST_NAME]', '1')")) {
                 return $this->DB->insert_id;
             }
         }

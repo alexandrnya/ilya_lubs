@@ -3,7 +3,6 @@ include "../Classes/autoload.php";
 
 use DB\Users;
 use HTML\Template;
-use PHPMailer\MyPHPMailer;
 
 $objUser = new Users();
 if (!(Users::checkLogin() && $arUser = $objUser->getArCurrentUser())) {
@@ -19,13 +18,13 @@ if ($_POST["SEND"]) {
         $mail = new MyPHPMailer;
 
 // От кого
-        $mail->setFrom($arUser["USERS_MAIL"], $arUser["FIRST_NAME"] . " " . $arUser["LAST_NAME"]);
+        $mail->setFrom($arUser["USERS_EMAIL"], $arUser["USERS_LOGIN"]);
 
 // Кому
-        $mail->addAddress($addressee["USERS_MAIL"], $addressee["FIRST_NAME"] . " " . $addressee["LAST_NAME"]);
+        $mail->addAddress($addressee["USERS_EMAIL"], $addressee["USERS_LOGIN"]);
 
 // Тема письма
-        $mail->Subject = $_POST["SUBJECT"];
+        $mail->addSubject($_POST["SUBJECT"]);
 
 // Тело письма
         $mail->msgHTML($_POST["MESSAGE"]);

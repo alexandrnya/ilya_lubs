@@ -289,3 +289,31 @@ textarea {
     text-align: center;
     padding: 5px;
 }
+
+.cpmment_add {
+    border: 2px solid;
+    border-radius: 3px;
+    margin: 10px 0;
+    padding: 8px;
+}
+.comments_table tr {
+    width: 100%;
+}
+.comments_table tr td {
+    text-align: left;
+    vertical-align: top;
+    padding: 5px;
+}
+.comments_table {
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+.comment_user {
+    border: 2px solid;
+    width: 20%;
+}
+.comment_text {
+    border: 2px solid;
+    width: 80%;
+}
