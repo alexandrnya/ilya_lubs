@@ -13,12 +13,15 @@ if(!Users::checkLogin()) {
 
 if($_POST["ADD_NEWS"]) {
     $uploaddir = $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_TO_LAB . '/uploads/news/';
-    $uploadView =  $_FILES['DETAIL_PICTURE']['name'] ? ($uploaddir . "view/". Helper::translit(basename($_FILES['VIEW_PICTURE']['name']))) : "";
+    $uploadView =  $_FILES['VIEW_PICTURE']['name'] ? ($uploaddir . "view/". Helper::translit(basename($_FILES['VIEW_PICTURE']['name']))) : "";
     $uploadDetail =  $_FILES['DETAIL_PICTURE']['name'] ? ($uploaddir . "detail/". Helper::translit(basename($_FILES['DETAIL_PICTURE']['name']))) : "";
     $uploated = true;
 
-    if($_FILES['VIEW_PICTURE']['tmp_name'] || $_FILES['DETAIL_PICTURE']['tmp_name']) {
-        move_uploaded_file($_FILES['VIEW_PICTURE']['tmp_name'], $uploadView);
+    if($_FILES['VIEW_PICTURE']['tmp_name']) {
+        move_uploaded_file($_FILES['VIEW_PICTURE']['tmp_name'], $uploadView);  
+    }
+
+    if($_FILES['DETAIL_PICTURE']['tmp_name']) {
         move_uploaded_file($_FILES['DETAIL_PICTURE']['tmp_name'], $uploadDetail);
     }
     $newsObj = new News();
