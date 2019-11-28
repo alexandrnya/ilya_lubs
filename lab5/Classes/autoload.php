@@ -1,5 +1,5 @@
 <?
-define("PATH_TO_LAB", "lab4");
+define("PATH_TO_LAB", "lab5");
 include_once $_SERVER["DOCUMENT_ROOT"] . "/" . PATH_TO_LAB . "/config.php";
 
 spl_autoload_register(function ($class_name) {

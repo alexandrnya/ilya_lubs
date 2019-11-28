@@ -3,30 +3,6 @@
 
 namespace DB;
 
-/*"
-CREATE TABLE IF NOT EXISTS `ilya_labs_lab4`.`comments` (
-`comments_id` INT(10) NOT NULL AUTO_INCREMENT,
-  `comments_comment` TEXT NULL DEFAULT NULL,
-  `comments_created_at` TIMESTAMP NULL DEFAULT NULL,
-  `users_id` INT(10) NOT NULL,
-  `news_id` INT(10) NOT NULL,
-  PRIMARY KEY (`comments_id`),
-  INDEX `fk_comments_users1` (`users_id` ASC) VISIBLE,
-  INDEX `fk_comments_news1` (`news_id` ASC) VISIBLE,
-  CONSTRAINT `fk_comments_news1`
-    FOREIGN KEY (`news_id`)
-    REFERENCES `ilya_labs_lab4`.`news` (`news_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comments_users1`
-    FOREIGN KEY (`users_id`)
-    REFERENCES `ilya_labs_lab4`.`users` (`users_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_unicode_ci
-"*/
 class Comments
 {
     private $DB;
