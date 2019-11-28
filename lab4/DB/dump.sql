@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.43, for Win32 (AMD64)
 --
--- Host: localhost    Database: lab4
+-- Host: localhost    Database: lab5
 -- ------------------------------------------------------
 -- Server version	5.6.43
 
@@ -79,6 +79,63 @@ INSERT INTO `news` VALUES (8,NULL,'','','','ХА рыбныйы текстХА �
 UNLOCK TABLES;
 
 --
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ACTIVE` int(1) NOT NULL DEFAULT '1',
+  `CREATED_AT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `SECTION_ID` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_product_section1_idx` (`SECTION_ID`),
+  CONSTRAINT `product_section` FOREIGN KEY (`SECTION_ID`) REFERENCES `section` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product`
+--
+
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `section`
+--
+
+DROP TABLE IF EXISTS `section`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `section` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `HEADER` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ACTIVE` int(1) DEFAULT '1',
+  `PARENT_ID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `PARENT_ID_idx` (`PARENT_ID`),
+  CONSTRAINT `SECTION_SECTION` FOREIGN KEY (`PARENT_ID`) REFERENCES `section` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `section`
+--
+
+LOCK TABLES `section` WRITE;
+/*!40000 ALTER TABLE `section` DISABLE KEYS */;
+INSERT INTO `section` VALUES (5,'Раздел ',NULL,1,0),(6,'Раздел 1',NULL,1,0),(7,'Раздел 2',NULL,1,0),(8,'Раздел 2',NULL,1,2);
+/*!40000 ALTER TABLE `section` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `themes`
 --
 
@@ -144,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-15 13:24:51
+-- Dump completed on 2019-11-28 16:44:53
