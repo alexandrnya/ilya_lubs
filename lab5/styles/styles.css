@@ -317,3 +317,12 @@ textarea {
     border: 2px solid;
     width: 80%;
 }
+
+.section_list {
+    
+}
+
+.section_list .section_item {
+    display: inline-block;
+    padding: 8px;
+}
