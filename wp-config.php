@@ -26,7 +26,7 @@ define( 'DB_NAME', 'lab6' );
 define( 'DB_USER', 'root' );
 
 /** Пароль к базе данных MySQL */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'secret' );
 
 /** Имя сервера MySQL */
 define( 'DB_HOST', 'localhost' );
