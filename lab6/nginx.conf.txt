@@ -2,8 +2,8 @@
 Это аналог того, что написано в файле .htaccess для apache
 Перенаправление со всех несуществующих URL в файл index.php
 
-location /api/ {
+location /lab6/ {
 	if (!-e $request_filename){
-	rewrite ^(.*)$ /index.php last;
+	rewrite ^(.*)$ /lab6/index.php last;
 	}
 }
