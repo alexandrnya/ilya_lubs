@@ -1,0 +1,65 @@
+.extra_info,
+#wide_menu ul li .submenu li,
+#wide_menu ul {
+    background: darkred; /*добавляем фон всему меню*/
+}
+
+.extra_info,
+#wide_menu a {
+    color: #fff; /*меняем цвет ссылок*/
+    border-color: #F36262;
+
+}
+
+.extra_info .extra_title:hover,
+#wide_menu .selected,
+#wide_menu a:hover {
+    background: #D43737; /*добавляем эффект при наведении*/
+}
+
+#left_block ul li,
+#left_block a {
+    color: darkred;
+}
+
+#left_block .selected,
+#left_block ul li:hover,
+#left_block a:hover {
+    color: #D43737;
+}
+
+#left_block .selected {
+    color: grey;
+}
+
+#footer {
+    color: #fff;
+    background: darkred;
+}
+
+.extra_info,
+#wide_menu ul,
+#main_container {
+    border-color: darkred;
+}
+
+#switch_theme div {
+    background: darkred;
+    color: #fff;
+    border-color: black;
+}
+
+.hint:hover::after {
+    background: darkred;
+    color: #fff;
+}
+
+.news_item a {
+    color: black;
+}
+
+.news_item .sign, .news_item h1 {
+    background: darkred;
+    color: #fff;
+}
+

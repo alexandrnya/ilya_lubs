@@ -1,0 +1,24 @@
+/*Стили для страниц*/
+#main_container {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid darkred;
+    border-radius: 3px
+}
+
+
+table#wrapper_table {
+    width: 100%;
+}
+
+table#wrapper_table tr td{
+    vertical-align: top;
+}
+
+table#wrapper_table tr td #body{
+    margin: 20px;
+}
+
+#body table td{
+    padding: 20px 10px;
+}

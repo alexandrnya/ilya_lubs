@@ -1,0 +1,68 @@
+body {
+    background: #303030;
+    color: #fff;
+}
+.extra_info,
+#wide_menu ul li .submenu li,
+#wide_menu ul {
+    background: #863e00; /*добавляем фон всему меню*/
+}
+
+#wide_menu a {
+    color: #fff; /*меняем цвет ссылок*/
+    border-color: #F36262;
+
+}
+
+.extra_info .extra_title:hover,
+#wide_menu .selected,
+#wide_menu a:hover {
+    background: #303030;
+    color: #ee6400;
+}
+
+#left_block ul li,
+#left_block a {
+    color: #ee6400;
+}
+
+#left_block .selected,
+#left_block ul li:hover,
+#left_block a:hover {
+    color: #fffdfe;
+}
+
+#footer {
+    color: #fff;
+    background: #863e00;
+}
+
+.extra_info,
+#wide_menu ul,
+#main_container {
+    border-color: #863e00;
+}
+
+#switch_theme div {
+    background: #863e00;
+    color: #fff;
+    border-color: #fff;
+}
+
+.hint:hover::after {
+    color: #fff;
+    background: #863e00;
+}
+
+#header #info {
+    color: black;
+}
+
+a {
+    color: #fff;
+}
+
+.news_item .sign {
+    background: #863e00;
+    color: #fff;
+}

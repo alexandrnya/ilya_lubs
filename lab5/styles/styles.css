@@ -1,0 +1,328 @@
+/*Общие стили для всех страниц и фреймов*/
+body {
+    margin: 0;
+
+    font-family: arial, serif; /*меняем шрифт*/
+    font-size: 16px;
+
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+    transition: all 0.3s 0.01s ease;
+}
+
+#left_block *,
+#wide_menu * {
+    -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+    transition: all 0.3s 0.01s ease;
+}
+
+strong {
+    cursor: default;
+}
+
+#body {
+    padding: 0 20px;
+}
+
+#body p {
+    margin-bottom: 21px;
+}
+
+#wide_menu {
+    margin-bottom: 40px;
+}
+
+#wide_menu ul {
+    list-style: none; /*убираем маркеры списка*/
+    margin: 0; /*убираем отступы*/
+    padding-left: 0; /*убираем отступы*/
+    height: 50px; /*задаем высоту*/
+    border: 1px solid;
+}
+
+#wide_menu a {
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+    padding: 0 15px; /*добавляем отступ*/
+    line-height: 50px; /*ровняем меню по вертикали*/
+    display: block;
+    border: 1px solid; /*добавляем бордюр справа*/
+
+}
+
+#wide_menu li {
+    margin: -1px 0 0 -1px;
+    float: left; /*Размещаем список горизонтально для реализации меню*/
+    position: relative;
+}
+
+#left_block {
+    width: 250px;
+    float: left;
+}
+
+#left_block ul {
+    list-style: decimal outside; /*убираем маркеры списка*/
+    padding-left: 24px;
+}
+
+#left_block a {
+    text-decoration: none; /*убираем подчеркивание текста ссылок*/
+}
+
+#left_block ul li {
+    margin: 8px 0;
+}
+
+
+#footer {
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/*Стили для страниц*/
+#main_container {
+    max-width: 1000px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+
+#body {
+    float: right;
+    width: calc(100% - 290px);
+}
+
+#body table td {
+    padding: 20px 10px;
+}
+
+#body h2 {
+    text-align: center;
+}
+
+#switch_theme {
+    position: relative;
+    top: -30px;
+}
+
+#switch_theme div {
+
+    position: fixed;
+    display: inline-block;
+    border: 3px solid;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#header #info {
+    position: fixed;
+    right: 0;
+    top: 0;
+    border: 1px solid black;
+    border-radius: 2px;
+    background: #fff;
+    padding: 5px;
+    font-weight: bold;
+}
+
+/*Всплывающая подсказка*/
+.hint {
+    position: relative;
+}
+
+.hint:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 0;
+    top: 100%; /* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid black; /* Параметры рамки */
+    border-radius: 3px;
+    opacity: 0.9;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#wide_menu ul li .submenu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 1px;
+    z-index: 2;
+    border: none;
+    width: 200px;
+}
+
+#wide_menu ul li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+}
+
+.submenu li a {
+    border: 1px solid;
+}
+
+#wide_menu ul li .submenu li {
+    float: none;
+}
+
+.popup {
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+}
+
+.popup .popup-content {
+    margin: 40px auto 0 auto;
+    width: 400px;
+    height: 40px;
+    padding: 10px;
+    background-color: #c5c5c5;
+    border-radius: 3px;
+    box-shadow: 0 0 10px #000;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    line-height: 10px;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+.gallery-item img {
+    height: 170px;
+    -moz-box-shadow: 0 0 8px 0;
+    box-shadow: 0 0 8px 0;
+}
+
+.gallery-item {
+    margin: 5px;
+}
+
+
+.extra_info {
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+.extra_info .extra_title {
+    padding: 10px;
+}
+
+.extra_info .extra_title {
+    cursor: pointer;
+}
+
+.extra_info .hide {
+    display: none;
+}
+
+label {
+    width: 100%;
+}
+label .label_for_text {
+    width: 100%;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select{
+    width: 100%;
+    padding: 3px 5px;
+    box-shadow: 1px 1px 2px 0px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+input[type="submit"]
+{
+    display: block;
+    margin: 0 auto;
+}
+
+textarea {
+    min-height: 200px;
+}
+
+.news_item {
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.news_item .img_block {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+.news_item a {
+    text-decoration: none;
+}
+
+.news_item .sign {
+
+    text-align: right;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.news_item h1 {
+    text-align: center;
+    padding: 5px;
+}
+
+.cpmment_add {
+    border: 2px solid;
+    border-radius: 3px;
+    margin: 10px 0;
+    padding: 8px;
+}
+.comments_table tr {
+    width: 100%;
+}
+.comments_table tr td {
+    text-align: left;
+    vertical-align: top;
+    padding: 5px;
+}
+.comments_table {
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+.comment_user {
+    border: 2px solid;
+    width: 20%;
+}
+.comment_text {
+    border: 2px solid;
+    width: 80%;
+}
+
+.section_list {
+    
+}
+
+.section_list .section_item {
+    display: inline-block;
+    padding: 8px;
+}
