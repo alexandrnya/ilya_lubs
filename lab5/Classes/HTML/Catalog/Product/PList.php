@@ -7,14 +7,14 @@ use DB\Catalog\Product;
 class PList
 {
     static
-    function publicList(int $idSection)
+    function publicList($idSection)
     {
-        $arSections = \DB\Catalog\Product::GetProducts($idSection);?>
-        <div class="section_list">
+        $arProducts = \DB\Catalog\Product::GetProductsBySectionID($idSection);?>
+        <div class="product_list">
             <?
-            foreach($arSections as $arSection): ?>
+            foreach($arProducts as $arProduct): ?>
                 <div class="section_item">
-                    <a href="<?=$_SERVER["SCRIPT_NAME"]?>?id=<?=$arSection["ID"]?>"><?=$arSection["NAME"]?></a>
+                    <a href="detail.php?id=<?=$arProduct["ID"]?>"><?=$arProduct["NAME"]?></a>
                 </div>
             <? endforeach; ?>
         </div>

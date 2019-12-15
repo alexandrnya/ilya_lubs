@@ -5,6 +5,8 @@ include "Classes/autoload.php";
 use HTML\Template;
 
 $template = new Template(); ?>
+<?$template->addStyle("../lib/lightbox/css/lightbox.min.css");
+$template->addScript("../lib/lightbox/js/lightbox-plus-jquery.min.js");?>
 <?= $template->htmlHeader("Галерея"); ?>
 <?= $template->htmlLeftBlock(); ?>
     <div id="body">

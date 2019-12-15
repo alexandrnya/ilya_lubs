@@ -45,4 +45,11 @@ class Helper
         $str = trim($str, "-");
         return $str;
     }
+
+    static function GetImg($img) {
+        if(empty($img) && !file_exists($img)) {
+            $img = "path/to/noImg/";
+        }
+        return $img;
+    }
 }

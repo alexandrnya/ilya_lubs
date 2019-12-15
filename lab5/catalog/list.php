@@ -9,17 +9,15 @@ use DB\Catalog\Product;
 
 $template = new Template();
 
-$idSection = (int)$_REQUEST["id"];
-if($idSection > 0) {
+$idSection = $_REQUEST["id"];
+if ($idSection > 0) {
     $arSection = Section::GetCurrentSection($idSection);
 }
 ?>
-<?=$template->htmlHeader($arSection["NAME"] ?: "Каталог");?>
-<?=$template->htmlLeftBlock();?>
+<?= $template->htmlHeader($arSection["NAME"] ?: "Каталог"); ?>
+<?= $template->htmlLeftBlock(); ?>
     <div id="body">
         <? SectionCList::publicList($idSection) ?>
-        <? if($arSection): ?>
-            <? ProductCList::publicList($idSection) ?>
-        <? endif; ?>
+        <? ProductCList::publicList($idSection) ?>
     </div>
-<?=$template->htmlFooter();?>
+<?= $template->htmlFooter(); ?>

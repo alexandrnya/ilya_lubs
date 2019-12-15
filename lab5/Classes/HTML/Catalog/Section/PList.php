@@ -7,7 +7,7 @@ namespace HTML\Catalog\Section;
 class PList
 {
     static
-    function publicList(int $idParent)
+    function publicList($idParent)
     {
         $arSections = \DB\Catalog\Section::GetChildSections($idParent);?>
         <div class="section_list">

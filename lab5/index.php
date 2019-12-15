@@ -5,7 +5,7 @@ use DB\Users;
 use HTML\Template;
 
 $template = new Template(); ?>
-<?= $template->htmlHeader("Лабараторная №4"); ?>
+<?= $template->htmlHeader("Лабараторная №5"); ?>
 <?= $template->htmlLeftBlock(); ?>
     <div id="body">
         <h2>Самое Главное</h2>

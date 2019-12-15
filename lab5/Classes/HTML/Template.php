@@ -23,7 +23,8 @@ class Template
                 "href" => $theme["THEMES_PATH"],
             ),
             array("href" => "styles/styles.css"),
-            array("href" => "../lib/lightbox/css/lightbox.min.css"),);
+            //array("href" => "../lib/lightbox/css/lightbox.min.css"),
+            );
 
         $this->scripts = array(
             array("src" => "script.js"),
@@ -83,7 +84,6 @@ class Template
                             "<li><a href='/" . PATH_TO_LAB . "/user/registration.php'>Регистрация</a></li>"
                 ) ."</ul>
                 </li>
-                <li><a href='/" . PATH_TO_LAB . "/forum/index.php'>Форум</a></li>
             </ul>
         </div>";
         return $html;
@@ -176,5 +176,16 @@ class Template
             </ul>
         </div>";
         return $html;
+    }
+    function addScript($path) {
+        if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/".PATH_TO_LAB. "/" . $path)) {
+            $this->scripts[] = array("src" => $path);
+        }
+    }
+
+    function addStyle($path) {
+        if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/".PATH_TO_LAB. "/" . $path)) {
+            $this->styles[] = array("href" => $path);
+        }
     }
 }
