@@ -237,6 +237,7 @@ strong {
 label {
     width: 100%;
 }
+
 label .label_for_text {
     width: 100%;
 }
@@ -245,7 +246,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 textarea,
-select{
+select {
     width: 100%;
     padding: 3px 5px;
     box-shadow: 1px 1px 2px 0px;
@@ -253,8 +254,7 @@ select{
     box-sizing: border-box;
 }
 
-input[type="submit"]
-{
+input[type="submit"] {
     display: block;
     margin: 0 auto;
 }
@@ -274,6 +274,7 @@ textarea {
     float: left;
     margin: 0 10px 10px 0;
 }
+
 .news_item a {
     text-decoration: none;
 }
@@ -296,14 +297,17 @@ textarea {
     margin: 10px 0;
     padding: 8px;
 }
+
 .comments_table tr {
     width: 100%;
 }
+
 .comments_table tr td {
     text-align: left;
     vertical-align: top;
     padding: 5px;
 }
+
 .comments_table {
     border-collapse: collapse;
     border: 2px solid;
@@ -313,20 +317,77 @@ textarea {
     border: 2px solid;
     width: 20%;
 }
+
 .comment_text {
     border: 2px solid;
     width: 80%;
 }
 
 .section_list {
-    
+    margin: 10px 0;
 }
 
 .section_list .section_item {
     display: inline-block;
-    padding: 8px;
+    height: 185px;
+    min-width: 150px;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 2px;
+    text-decoration: none;
 }
 
-.header_product {
+.section_item .section_name {
+    display: block;
+    margin: 5px;
+}
 
+.img_section_list {
+    height: 150px;
+}
+
+.product_item {
+    display: flex;
+    border: 2px solid;
+    border-radius: 2px;
+    margin: 5px 0;
+    text-decoration: none;
+}
+
+.product_href {
+    display: block;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.img_product_list img {
+    width: 100px;
+}
+
+.img_product_list {
+    margin: 5px;
+}
+
+.img_product_detail img {
+    width: 250px;
+    float: left;
+}
+
+.price_block {
+    font-size: 30px;
+}
+
+.sale_block {
+    margin: 5px;
+    text-align: center;
+}
+
+.buy_btn {
+    display: inline-block;
+    border: 1px solid;
+    padding: 5px 30px;
+    margin: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
 }

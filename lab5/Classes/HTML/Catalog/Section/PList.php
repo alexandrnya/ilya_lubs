@@ -4,18 +4,21 @@
 namespace HTML\Catalog\Section;
 
 
+use DB\Catalog\Section;
+use Helpers\Helper;
+
 class PList
 {
-    static
-    function publicList($idParent)
+    static function publicList($idParent)
     {
-        $arSections = \DB\Catalog\Section::GetChildSections($idParent);?>
+        $arSections = Section::GetChildSections($idParent);?>
         <div class="section_list">
             <?
             foreach($arSections as $arSection): ?>
-                <div class="section_item">
-                    <a href="<?=$_SERVER["SCRIPT_NAME"]?>?id=<?=$arSection["ID"]?>"><?=$arSection["NAME"]?></a>
-                </div>
+                <a class="section_item" href="<?=$_SERVER["SCRIPT_NAME"]?>?SECTION_ID=<?=$arSection["ID"]?>">
+                    <img class="img_section_list" src="<?=Helper::GetImg($arSection["PICTURE"])?>" alt="<?=$arSection["NAME"]?>">
+                    <span class="section_name"><?=$arSection["NAME"]?></span>
+                </a>
             <? endforeach; ?>
         </div>
         <?

@@ -34,4 +34,18 @@ class Section
         }
         return false;
     }
+
+    public static function getAllSection()
+    {
+        global $mysqli;
+        $arItem = [];
+        $query = "SELECT * FROM section WHERE ACTIVE != 0";
+        $res = $mysqli->query($query);
+        if($res) {
+            while($item = $res->fetch_assoc()) {
+                $arItem[$item["ID"]] = $item;
+            }
+        }
+        return $arItem;
+    }
 }

@@ -3,6 +3,9 @@
 
 namespace HTML;
 
+use DB\Catalog\Basket;
+use DB\Catalog\Filter;
+use DB\Catalog\Section;
 use DB\Themes;
 use DB\Users;
 
@@ -11,6 +14,8 @@ class Template
     // Ссылки относитльно корня.
     private $styles = [];
     private $scripts = [];
+    
+    private $htmlCatalogFilter = "";
 
     function __construct()
     {
@@ -68,6 +73,9 @@ class Template
         <div id='wide_menu'>
             <ul>
                 <li><a href='/" . PATH_TO_LAB . "/index.php'>Главная</a></li>
+                <li><a href='/" . PATH_TO_LAB . "/catalog/list.php'>Каталог</a>";
+        $html .= $this->htmlCatalogMenu();
+        $html .="</li>
                 <li><a href='/" . PATH_TO_LAB . "/about.php'>О Компании</a>
                     <ul class='submenu'>
                         <li><a href='/" . PATH_TO_LAB . "/galery.php'>Галерея</a></li>
@@ -75,7 +83,6 @@ class Template
                     </ul>
                 </li>
                 <li><a href='/" . PATH_TO_LAB . "/help247.php'>Удаленная поддержка '24/7'</a></li>
-                <li><a href='https://www.google.com' onclick='getAlert()'>google.com (Подтверждение)</a></li>
                 <li><a href='/" . PATH_TO_LAB . "/user/login.php'>Личный кабинет</a>
                     <ul class='submenu'>"
                 .(
@@ -84,8 +91,60 @@ class Template
                             "<li><a href='/" . PATH_TO_LAB . "/user/registration.php'>Регистрация</a></li>"
                 ) ."</ul>
                 </li>
+                <li> ". $this->htmlBasket() . "</li>
             </ul>
         </div>";
+        return $html;
+    }
+    
+    function htmlChildCatalogMenu($idParent, $arSections) {
+        $html = "";
+        if($arSections[$idParent]) {
+            $html .= "<ul class='submenu2'>";
+            foreach($arSections as $section) {
+                if($section["PARENT_ID"] === $idParent) {
+                    $html .= "<li><a href='/".PATH_TO_LAB."/catalog/list.php?id=$section[ID]'>$section[NAME]</a>";
+                    $html .= $this->htmlChildCatalogMenu($section["ID"], $arSections);
+                    $html .= "</li>";
+                }
+            }
+            $html .= "</ul>";
+        }
+        return $html;
+    }
+
+    function htmlCatalogMenu()
+    {
+        $html = "";
+        $arSections = Section::getAllSection();
+        if( !empty($arSections)) {
+            /*$html .="<style>
+                .submenu ul li .submenu2 {
+                    visibility: hidden;
+                    opacity: 0;
+                    position: absolute;
+                    left: 1px;
+                    z-index: 2;
+                    border: none;
+                    width: 200px;
+                }
+                
+                .submenu ul li:hover .submenu2 {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                </style>";*/
+            $html .= "<ul class='submenu'>";
+            foreach($arSections as $section) {
+                if($section["PARENT_ID"] === null) {
+                    $html .= "<li><a href='/".PATH_TO_LAB."/catalog/list.php?SECTION_ID=$section[ID]'>$section[NAME]</a>";
+                    // Хотел сделать неограниченное вложенное меню из разделов. Передумал:)
+                    //$html .= $this->htmlChildCatalogMenu($section["ID"], $arSections);
+                    $html .= "</li>";
+                }
+            }
+            $html .= "</ul>";
+        }
         return $html;
     }
 
@@ -112,6 +171,16 @@ class Template
         $html .= $this->createMenu();
 
         $html .= "</div>";
+        return $html;
+    }
+    
+    function htmlBasket() {
+        if($idUser = Users::getCurrentUserID()) {
+            $quantity = Basket::getCount($idUser);
+        } else {
+            $quantity = 0;
+        }
+            $html = "<a class='basket' href='/".PATH_TO_LAB."/order/index.php'>Корзина (<span class='basket_count'>$quantity</span>)</a>";
         return $html;
     }
 
@@ -173,8 +242,9 @@ class Template
                     <a href='/" . PATH_TO_LAB . "/helpdesk.php' class='hint' data-title='Разные списки и схлапывающиеся блоки'>Удаленная
                         техподдержка</a>
                 </li>
-            </ul>
-        </div>";
+            </ul>";
+        $html .= $this->htmlCatalogFilter;
+        $html .= "</div>";
         return $html;
     }
     function addScript($path) {
@@ -187,5 +257,32 @@ class Template
         if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/".PATH_TO_LAB. "/" . $path)) {
             $this->styles[] = array("href" => $path);
         }
+    }
+    
+    function addHTMLCatalogFilter($idSection, array $arFilterValues = []) {
+        $html = "";
+        $arFilter = Filter::getFilter($idSection);
+        if(!empty($arFilter)) {
+            $html .= "<div class='filter'>";
+            $html .= "<span class='filter_header'>Фильтр</span>";
+            $html .= "<form method='GET'>";
+            foreach($arFilter as $filter) {
+                $html .= "<label><div class='label_for_text'>$filter[NAME]</div>";
+                $html .= "<select name='FILTER[$filter[ID]]'>";
+                $html .= "<option value=''>Выберите свойство</option>";
+                foreach($filter["VALUES"] as $value) {
+                    $html .= "<option value='$value[ID]'".(in_array($value["ID"], $arFilterValues) ? " selected" : "").">$value[VALUE]</option>";
+                }
+                $html .= "</select>";
+                $html .= "</label>";
+            }
+            $html .= "<input type='hidden' name='SECTION_ID' value='$idSection'>";
+            $html .= "<label>
+                        <input type='submit' name='APPLY_FILTER' value='Найти'>
+                    </label>";
+            $html .= "</form>";
+            $html .= "</div>";
+        }
+        $this->htmlCatalogFilter = $html;
     }
 }

@@ -15,7 +15,7 @@ class Comments
 
     public function addComment($arComment)
     {
-        if($users_id = Users::getCurrentUser()) {
+        if($users_id = Users::getCurrentUserID()) {
             $res =
                 $this->DB->query("INSERT INTO comments(users_id, comments_comment, news_id) VALUES ($users_id, '$arComment[COMMENT]', '$arComment[NEWS_ID]')");
             return $this->DB->insert_id;
@@ -40,7 +40,7 @@ class Comments
     }
     
     public function deleteComment($id) {
-        if($users_id = Users::getCurrentUser()) {
+        if($users_id = Users::getCurrentUserID()) {
             return $res = $this->DB->query("DELETE FROM comments WHERE comments_id = '$id' and users_id = '$users_id'");
         }
     }

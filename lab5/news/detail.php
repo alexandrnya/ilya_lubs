@@ -38,7 +38,7 @@ $template = new Template(); ?>
                 <div style="clear: both;"></div>
             </div>
             <div class="sign">
-                <? if($arNews["USERS_ID"] == Users::getCurrentUser()): ?>
+                <? if($arNews["USERS_ID"] == Users::getCurrentUserID()): ?>
                     <div class="delete">
                         <a href="list.php?action=delete&id=<?=$arNews["NEWS_ID"]?>" style="float: left;">Удалить
                             новость</a>
@@ -64,7 +64,7 @@ $template = new Template(); ?>
                             </td>
                             <td class="comment_text"><?=$comment["COMMENTS_COMMENT"]?></td>
                         </tr>
-                        <? if($comment["USERS_ID"] == Users::getCurrentUser()) : ?>
+                        <? if($comment["USERS_ID"] == Users::getCurrentUserID()) : ?>
                             <tr>
                                 <td></td>
                                 <td>

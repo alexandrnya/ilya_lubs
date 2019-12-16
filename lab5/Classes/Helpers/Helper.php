@@ -48,7 +48,7 @@ class Helper
 
     static function GetImg($img) {
         if(empty($img) && !file_exists($img)) {
-            $img = "path/to/noImg/";
+            $img = "/" . PATH_TO_LAB . "/img/no_photo.png";
         }
         return $img;
     }

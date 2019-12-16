@@ -35,7 +35,7 @@ $template = new Template(); ?>
                         </div>
                     </a>
                     <div class="sign">
-                        <? if($news["USERS_ID"] == Users::getCurrentUser()): ?>
+                        <? if($news["USERS_ID"] == Users::getCurrentUserID()): ?>
                             <div class="delete">
                                 <input type="submit" name="DELETE[<?=$news["NEWS_ID"]?>]" style="float: left; margin-top: 7px;" value="Удалить новость">
                                 <!--<a href="list.php?action=delete&id=<?=$news["NEWS_ID"]?>" style="float: left;"></a>-->

@@ -123,16 +123,23 @@ class Users
 
     public function getArCurrentUser()
     {
-        $users_id = self::getCurrentUser();
-        $res = $this->DB->query("SELECT USERS_ID, USERS_LOGIN, USERS_EMAIL, USERS_FIRST_NAME, USERS_LAST_NAME, THEMES_ID FROM users WHERE users_id = $users_id");
-        if ($res) {
-            $arUser = $res->fetch_assoc();
-            return $arUser;
+        $users_id = self::getCurrentUserID();
+        $arUser = $this->getArUserByID($users_id);
+        return $arUser;
+    }
+    
+    public function getArUserByID(int $idUser = null) {
+        if($idUser !== null) {
+            $res = $this->DB->query("SELECT USERS_ID, USERS_LOGIN, USERS_EMAIL, USERS_FIRST_NAME, USERS_LAST_NAME, THEMES_ID FROM users WHERE users_id = $idUser");
+            if($res) {
+                $arUser = $res->fetch_assoc();
+                return $arUser;
+            }
         }
         return false;
     }
 
-    public static function getCurrentUser()
+    public static function getCurrentUserID()
     {
         if ($users_id = $_SESSION["USER_ID"]) {
             return $users_id;
@@ -141,7 +148,7 @@ class Users
     }
 
     public function getTheme() {
-        $users_id = self::getCurrentUser();
+        $users_id = self::getCurrentUserID();
         $res = $this->DB->query("SELECT t.THEMES_PATH FROM users u LEFT JOIN themes t ON u.themes_id = t.themes_id WHERE u.users_id = $users_id");
         if ($res) {
             $theme = $res->fetch_assoc();

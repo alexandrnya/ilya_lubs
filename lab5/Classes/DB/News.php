@@ -24,7 +24,7 @@ class News
     }
 
     public function addNews($arNews) {
-        if($users_id = Users::getCurrentUser()) {
+        if($users_id = Users::getCurrentUserID()) {
             $res = $this->DB->query("INSERT INTO news(users_id, news_name, news_detail_text, news_view_text, news_detail_picture, news_view_picture) VALUES ($users_id, '$arNews[NAME]', '$arNews[DETAIL_TEXT]', '$arNews[VIEW_TEXT]', '$arNews[DETAIL_PICTURE]', '$arNews[VIEW_PICTURE]')");
             return $this->DB->insert_id;
         }
@@ -32,7 +32,7 @@ class News
     }
 
     public function deleteNews($id) {
-        if($users_id = Users::getCurrentUser()) {
+        if($users_id = Users::getCurrentUserID()) {
             $res = $this->DB->query("DELETE FROM news WHERE news.news_id = $id and users_id = $users_id");
         }
     }
