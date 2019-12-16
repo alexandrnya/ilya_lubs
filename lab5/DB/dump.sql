@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.41, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.6.43, for Win32 (AMD64)
 --
 -- Host: localhost    Database: lab5
 -- ------------------------------------------------------
--- Server version	5.6.41
+-- Server version	5.6.43
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,36 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `basket`
+--
+
+DROP TABLE IF EXISTS `basket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `basket` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `QUANTITY` int(2) NOT NULL DEFAULT '1',
+  `USER_ID` int(11) NOT NULL,
+  `PRODUCT_ID` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_basket_product1_idx` (`PRODUCT_ID`),
+  KEY `fk_basket_users1_idx` (`USER_ID`),
+  CONSTRAINT `fk_basket_product1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_basket_users1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`users_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `basket`
+--
+
+LOCK TABLES `basket` WRITE;
+/*!40000 ALTER TABLE `basket` DISABLE KEYS */;
+INSERT INTO `basket` VALUES (8,1,1,2),(9,1,1,1);
+/*!40000 ALTER TABLE `basket` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `comments`
@@ -91,7 +121,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`ID`),
   KEY `fk_product_section1_idx` (`SECTION_ID`),
   CONSTRAINT `fk_product_section1` FOREIGN KEY (`SECTION_ID`) REFERENCES `section` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +130,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD]',21599.0000,3,1,'/lab5/uploads/Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD].jpg');
+INSERT INTO `product` VALUES (1,'Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD]',21599.0000,3,1,'/lab5/uploads/Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD].jpg'),(2,'MSI AMD Radeon RX 570 ARMOR OC',10499.0000,3,1,NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,14 +142,10 @@ DROP TABLE IF EXISTS `product_property`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_property` (
-  `PRODUCT_ID` int(11) NOT NULL,
-  `PROPERTY_ID` int(11) NOT NULL,
-  PRIMARY KEY (`PRODUCT_ID`,`PROPERTY_ID`),
-  KEY `fk_product_property_product1_idx` (`PRODUCT_ID`),
-  KEY `fk_product_property_property1_idx` (`PROPERTY_ID`),
-  CONSTRAINT `fk_product_property_product1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_product_property_property1` FOREIGN KEY (`PROPERTY_ID`) REFERENCES `property` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,56 +154,38 @@ CREATE TABLE `product_property` (
 
 LOCK TABLES `product_property` WRITE;
 /*!40000 ALTER TABLE `product_property` DISABLE KEYS */;
+INSERT INTO `product_property` VALUES (1,'Максимальная температура процессора'),(2,'Год релиза');
 /*!40000 ALTER TABLE `product_property` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `property`
+-- Table structure for table `product_property_value`
 --
 
-DROP TABLE IF EXISTS `property`;
+DROP TABLE IF EXISTS `product_property_value`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `property` (
+CREATE TABLE `product_property_value` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `NAME` varchar(100) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `property`
---
-
-LOCK TABLES `property` WRITE;
-/*!40000 ALTER TABLE `property` DISABLE KEYS */;
-/*!40000 ALTER TABLE `property` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `property_value`
---
-
-DROP TABLE IF EXISTS `property_value`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `property_value` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `PROPERTY_ID` int(11) NOT NULL,
-  `VALUE` text,
+  `PRODUCT_ID` int(11) NOT NULL,
+  `PRODUCT_PROPERTY_ID` int(11) NOT NULL,
+  `VALUE` text COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `fk_property_value_property1_idx` (`PROPERTY_ID`),
-  CONSTRAINT `fk_property_value_property1` FOREIGN KEY (`PROPERTY_ID`) REFERENCES `property` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_product_property_vaue_product1_idx` (`PRODUCT_ID`),
+  KEY `fk_product_property_vaue_product_property1_idx` (`PRODUCT_PROPERTY_ID`),
+  CONSTRAINT `fk_product_property_vaue_product1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_product_property_vaue_product_property1` FOREIGN KEY (`PRODUCT_PROPERTY_ID`) REFERENCES `product_property` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `property_value`
+-- Dumping data for table `product_property_value`
 --
 
-LOCK TABLES `property_value` WRITE;
-/*!40000 ALTER TABLE `property_value` DISABLE KEYS */;
-/*!40000 ALTER TABLE `property_value` ENABLE KEYS */;
+LOCK TABLES `product_property_value` WRITE;
+/*!40000 ALTER TABLE `product_property_value` DISABLE KEYS */;
+INSERT INTO `product_property_value` VALUES (1,2,1,'95°'),(2,2,2,'2017'),(3,1,2,'2018');
+/*!40000 ALTER TABLE `product_property_value` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -196,7 +204,7 @@ CREATE TABLE `section` (
   PRIMARY KEY (`ID`),
   KEY `parent_section_id_idx` (`PARENT_ID`),
   CONSTRAINT `parent_section_id` FOREIGN KEY (`PARENT_ID`) REFERENCES `section` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +213,7 @@ CREATE TABLE `section` (
 
 LOCK TABLES `section` WRITE;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` VALUES (3,'Видеокарты',NULL,1,NULL);
+INSERT INTO `section` VALUES (3,'Видеокарты','/lab5/uploads/video_cards.jpg',1,NULL),(4,'Для теста',NULL,1,3),(5,'для теста',NULL,1,3),(6,'для теста ',NULL,1,4),(7,'для теста',NULL,1,6);
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,7 +270,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'alexandrnya','a@mail.ru','e10adc3949ba59abbe56e057f20f883e','A','b','2019-11-05 12:06:57',1),(2,'alexandrnya','a@mail.ru','e10adc3949ba59abbe56e057f20f883e','A','b','2019-11-10 10:43:03',1),(3,'Zhuravlev-AG','alexandrnya1997@gmail.com','e10adc3949ba59abbe56e057f20f883e','A','Zhuravliov','2019-11-16 08:21:38',1);
+INSERT INTO `users` VALUES (1,'alexandrnya','a@mail.ru','e10adc3949ba59abbe56e057f20f883e','A','b','2019-11-05 12:06:57',2),(2,'alexandrnya','a@mail.ru','e10adc3949ba59abbe56e057f20f883e','A','b','2019-11-10 10:43:03',2),(3,'alexandrnya','a@mail.ru','e10adc3949ba59abbe56e057f20f883e','A','b','2019-11-16 08:21:38',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -275,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-15 18:11:38
+-- Dump completed on 2019-12-17 17:51:14
