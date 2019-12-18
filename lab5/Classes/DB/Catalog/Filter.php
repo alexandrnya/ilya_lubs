@@ -22,7 +22,7 @@ SELECT DISTINCT pp.ID, pp.NAME
             $resProp = $mysqli->query($queryProp);
             if($resProp) {
                 $queryVal = "
-SELECT DISTINCT v.VALUE , v.ID, v.PRODUCT_PROPERTY_ID
+SELECT DISTINCT v.VALUE , v.PRODUCT_PROPERTY_ID
 	FROM product_property pp
     LEFT JOIN product_property_value v ON v.PRODUCT_PROPERTY_ID = pp.ID
     LEFT JOIN product p ON v.PRODUCT_ID = p.ID

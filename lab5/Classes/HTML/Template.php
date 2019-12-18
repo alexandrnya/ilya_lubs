@@ -271,7 +271,7 @@ class Template
                 $html .= "<select name='FILTER[$filter[ID]]'>";
                 $html .= "<option value=''>Выберите свойство</option>";
                 foreach($filter["VALUES"] as $value) {
-                    $html .= "<option value='$value[ID]'".(in_array($value["ID"], $arFilterValues) ? " selected" : "").">$value[VALUE]</option>";
+                    $html .= "<option value='$value[VALUE]'".(in_array($value["VALUE"], $arFilterValues) ? " selected" : "").">$value[VALUE]</option>";
                 }
                 $html .= "</select>";
                 $html .= "</label>";
