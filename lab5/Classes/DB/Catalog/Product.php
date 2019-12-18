@@ -78,11 +78,31 @@ SELECT p.ID, p.NAME, v.PRODUCT_ID, GROUP_CONCAT(DISTINCT v.VALUE ORDER BY v.VALU
 
         $arItem = [];
         $query = "
-SELECT DISTINCT p.*
-	FROM product p
-    LEFT JOIN product_property_value v ON v.PRODUCT_ID = p.ID
-    LEFT JOIN product_property pp ON pp.ID = v.PRODUCT_PROPERTY_ID
-    WHERE $where";
+select	p.ID,
+		p.NAME,
+        p.PICTURE,
+		count(distinct pp.id) as pp_count,
+        group_concat(pp_for_concat.name) as not_matched -- Параметры, по которым не было значений в product_property_value - но считаем, что NULL не должен мешать получению выборки, но сообщить об этом нужно.
+from	product p
+			cross join product_property pp
+				left join product_property_value ppv on (
+					ppv.product_id = p.id
+                    and ppv.product_property_id = pp.id
+                )
+                left join product_property pp_for_concat on (
+					pp_for_concat.id = pp.id
+                    and ppv.id is null
+                )
+where	(	-- Условие А
+			( pp.id = 1 and ( ppv.value like '%95%' or ppv.value is null ) )
+            or ( pp.id = 2 and ( ppv.value like '2017' or ppv.value is null ) )
+		)
+group by
+		p.ID,
+        p.NAME,
+        p.PICTURE
+having
+		pp_count = 2 -- Количество секций проверок в Условии А";
         $res = $mysqli->query($query);
         while($item = $res->fetch_assoc()) {
             $arItem[] = $item;
