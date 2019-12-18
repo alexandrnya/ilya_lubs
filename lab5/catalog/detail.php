@@ -37,13 +37,17 @@ $template->addScript("../lib/lightbox/js/lightbox-plus-jquery.min.js"); ?>
                 <div class="price_block">
                     <span><?=(float)$arProduct["PRICE"]?> руб.</span>
                 </div>
-                <div class="buy_btn" onclick='addIntoBasket({
-                        PRODUCT_ID: <?=$arProduct["ID"]?>,
-                        USER_ID: <?=Users::getCurrentUserID()?>,
-                        QUANTITY: 1,
-                        })'>
-                    Купить
-                </div>
+                <?if($userID = Users::getCurrentUserID()):?>
+                    <div class="buy_btn" onclick='addIntoBasket({
+                            PRODUCT_ID: <?=$arProduct["ID"]?>,
+                            USER_ID: <?=$userID?>,
+                            QUANTITY: 1,
+                            })'>
+                        Купить
+                    </div>
+                <?else:?>
+                    <a class="buy_btn" href="/<?=PATH_TO_LAB?>/user/login.php">Авторизоваться</a>
+                <?endif;?>
             </div>
             <div style="clear:both;"></div>
             <div class="property_block">
