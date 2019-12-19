@@ -29,10 +29,16 @@ $arUser = $User->getArCurrentUser(); ?>
         <? if($_REQUEST["APPLY"]) : ?>
             <?
             $arOrder = $_POST;
-            Order::addOrder($arOrder) ?>
-            <div id="body">
-                <?="Заказ успешно оформлен"?>
-            </div>
+            if(Order::addOrder($arOrder, $arUser["USERS_ID"])): ?>
+            <?Basket::deleteByUserID($arUser["USERS_ID"]);?>
+                <div id="body">
+                    <?="Заказ успешно оформлен"?>
+                </div>
+            <?else:?>
+                <div id="body">
+                    <?="Ошибка оформления заказа"?>
+                </div>
+            <?endif?>
         <? elseIf($_REQUEST["DEL"]): ?>
             <?Basket::deleteByID($_REQUEST["DEL"]);?>
             <meta http-equiv="refresh" content="0; <?="/" . PATH_TO_LAB . "/order/index.php"?>">
@@ -77,7 +83,7 @@ $arUser = $User->getArCurrentUser(); ?>
                         <? foreach($arBasket as $basketItem): ?>
                             <tr>
                                 <td><?=$basketItem["NAME"]?></td>
-                                <td><?=$basketItem["QUANTITY"]?> шт.</td>
+                                <td><input type="text" name="ITEM[<?=$basketItem["ID"]?>][QUANTITY]" size="2" value="<?=(int)$basketItem["QUANTITY"]?>" maxlength="2"> шт.</td>
                                 <td><?=(float)$basketItem["PRICE"]?> руб.</td>
                                 <td><?=(float)$basketItem["PRICE"] * (float)$basketItem["QUANTITY"]?> руб.</td>
                                 <td><a class="delete_item" href="<?="/" . PATH_TO_LAB . "/order/index.php?DEL=" . $basketItem["ID"]?>"></a></td>

@@ -51,4 +51,14 @@ class Basket
         }
         return false;
     }
+
+    public static function deleteByUserID(int $id = null)
+    {
+        global $mysqli;
+        if($id !==null && $id >= 0) {
+            $res = $mysqli->query("DELETE FROM basket WHERE USER_ID = $id");
+            return $res;
+        }
+        return false;
+    }
 }
