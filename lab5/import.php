@@ -76,9 +76,12 @@ if($csv) {
                 $idProperty = $mysqli->insert_id;
             }
             $mysqli->query("DELETE FROM product_property_value WHERE PRODUCT_ID = $idProduct AND PRODUCT_PROPERTY_ID = $idProperty");
-            foreach($arValuesProp as $valueProp) {                
-                $res = $mysqli->query("INSERT INTO product_property_value(PRODUCT_ID, PRODUCT_PROPERTY_ID, VALUE) VALUE($idProduct, $idProperty, '$valueProp')");
-                $idValue = $mysqli->insert_id;
+            foreach($arValuesProp as $valueProp) {
+                $valueProp = trim($valueProp);
+                if($valueProp !== "") {
+                    $res = $mysqli->query("INSERT INTO product_property_value(PRODUCT_ID, PRODUCT_PROPERTY_ID, VALUE) VALUE($idProduct, $idProperty, '$valueProp')");
+                    $idValue = $mysqli->insert_id;
+                }
             }
         }
     }

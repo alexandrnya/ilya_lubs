@@ -1,3 +1,4 @@
-NAME;PRICE;SECTION_NAME;PICTURE;Год релиза
-Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD];21599;Видеокарты;/lab5/uploads/Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD].jpg;2017,2018
-MSI AMD Radeon RX 570 ARMOR OC;10499;Видеокарты;;2017
+NAME;PRICE;SECTION_NAME;PICTURE;Год релиза;Объем видеопамяти;Тип памяти;Разрядность шины памяти;Видео разъемы;Тип охлаждения;Сокет;Чипсет;Максимальная частота памяти (МГц);Подсветка
+Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD];21599;Видеокарты;/lab5/uploads/Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD].jpg;2018;6 ГБ;GDDR6;192 бит;HDMI,DisplayPort (3 шт);активное воздушное;;;;Есть
+MSI AMD Radeon RX 570 ARMOR OC;10499;Видеокарты;/lab5/uploads/381da99568066225543f02fc2f177635b2dff08f0a2baa05576849324f23cb70.jpg;2017;4 ГБ;GDDR5;256 бит;DVI-D,HDMI,DisplayPort (3 шт);активное воздушное;;;;Нет
+Материнская плата GIGABYTE GA-F2A68HM-DS2;3 050;Материнские платы;/lab5/uploads/42ffd7bae5c046f290c868a79eebfe50ecebd0fc745e304f52d8934e5ffa6417.jpg;2014;;DDR3;;;;FM2+;AMD A68H;2400 МГц;Нет
