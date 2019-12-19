@@ -74,18 +74,16 @@ SELECT p.ID, p.NAME, v.PRODUCT_ID, GROUP_CONCAT(DISTINCT v.VALUE ORDER BY v.VALU
             $where .= " AND (";
             foreach($arFilter as $idProperty => $value) {
                 if($value) {
-                    $where .= "( pp.id = $idProperty and ( ppv.value = '$value' or ppv.value is null ) ) or";
-                } else {
-                    $where .= "( pp.id = $idProperty and ( ppv.value is not null ) ) or";
+                    $where .= "( pp.id = $idProperty and ( ppv.value = '$value') ) or";
+                    $filterCount++;
                 }
-                $filterCount ++;
             } if($filterCount > 0) {
                 $where = substr($where, 0, -3);
             }
             $where .= ")";
-        }
-        if($filterCount <= 0) {
-            return self::GetProductsBySectionID($idSection);
+            if($filterCount == 0) {
+                $where = substr($where, 0, -7);
+            }
         }
 
         $arItem = [];
@@ -109,12 +107,15 @@ where	($where)
 group by
 		p.ID,
         p.NAME,
-        p.PICTURE
-having
-		PP_COUNT = $filterCount -- Количество секций проверок в Условии А";
+        p.PICTURE".($filterCount > 0 ?
+                " having PP_COUNT = $filterCount -- Количество секций проверок в Условии А" :
+                ""
+            );
         $res = $mysqli->query($query);
-        while($item = $res->fetch_assoc()) {
-            $arItem[] = $item;
+        if($res) {
+            while($item = $res->fetch_assoc()) {
+                $arItem[] = $item;
+            }
         }
         return $arItem;
     }

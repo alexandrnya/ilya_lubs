@@ -21,10 +21,6 @@ class PList
                                     src="<?=Helper::GetImg($arProduct["PICTURE"])?>" alt="<?=$arProduct['NAME']?>"/>
                         </a>
                         <a class="product_href" href="detail.php?id=<?=$arProduct["ID"]?>">
-                            <?if($arProduct["NOT_MATCHED"]):?>
-                                <div>Не найдено: <?=$arProduct["NOT_MATCHED"]?></div>
-                                <br>
-                            <?endif;?>
                             <?=$arProduct["NAME"]?>
                         </a>
                     </div>
