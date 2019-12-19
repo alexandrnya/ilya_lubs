@@ -32,7 +32,7 @@ CREATE TABLE `basket` (
   KEY `fk_basket_users1_idx` (`USER_ID`),
   CONSTRAINT `fk_basket_product1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_basket_users1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`users_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,6 @@ CREATE TABLE `basket` (
 
 LOCK TABLES `basket` WRITE;
 /*!40000 ALTER TABLE `basket` DISABLE KEYS */;
-INSERT INTO `basket` VALUES (8,1,1,2),(9,1,1,1);
 /*!40000 ALTER TABLE `basket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,6 +104,35 @@ INSERT INTO `news` VALUES (8,2,'','','','ХА рыбныйы текстХА ры
 UNLOCK TABLES;
 
 --
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orders` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `EMAIL` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `PHONE` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `CITY` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `USER_ID` int(10) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_orders_users1_idx` (`USER_ID`),
+  CONSTRAINT `fk_orders_users1` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`users_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'a@mail.ru','987','68',0),(2,'a@mail.ru','987','68',0),(3,'a@mail.ru','987','68',0);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `product`
 --
 
@@ -121,7 +149,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`ID`),
   KEY `fk_product_section1_idx` (`SECTION_ID`),
   CONSTRAINT `fk_product_section1` FOREIGN KEY (`SECTION_ID`) REFERENCES `section` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,8 +158,36 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD]',21599.0000,3,1,'/lab5/uploads/Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD].jpg'),(2,'MSI AMD Radeon RX 570 ARMOR OC',10499.0000,3,1,NULL);
+INSERT INTO `product` VALUES (1,'Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD]',21599.0000,3,1,'/lab5/uploads/Gigabyte GeForce GTX 1660 Ti GAMING OC [GV-N166TGAMING OC-6GD].jpg'),(2,'MSI AMD Radeon RX 570 ARMOR OC',10499.0000,3,1,'/lab5/uploads/381da99568066225543f02fc2f177635b2dff08f0a2baa05576849324f23cb70.jpg'),(3,'Материнская плата GIGABYTE GA-F2A68HM-DS2',3.0000,8,1,'/lab5/uploads/42ffd7bae5c046f290c868a79eebfe50ecebd0fc745e304f52d8934e5ffa6417.jpg');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_order`
+--
+
+DROP TABLE IF EXISTS `product_order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_order` (
+  `PRODUCT_ID` int(11) NOT NULL,
+  `ORDER_ID` int(11) NOT NULL,
+  `QUANTITY` int(2) DEFAULT NULL,
+  PRIMARY KEY (`PRODUCT_ID`,`ORDER_ID`),
+  KEY `fk_product_order_product1_idx` (`PRODUCT_ID`),
+  KEY `fk_product_order_order1_idx` (`ORDER_ID`),
+  CONSTRAINT `fk_product_order_order1` FOREIGN KEY (`ORDER_ID`) REFERENCES `orders` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_product_order_product1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_order`
+--
+
+LOCK TABLES `product_order` WRITE;
+/*!40000 ALTER TABLE `product_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -145,7 +201,7 @@ CREATE TABLE `product_property` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `NAME` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +210,7 @@ CREATE TABLE `product_property` (
 
 LOCK TABLES `product_property` WRITE;
 /*!40000 ALTER TABLE `product_property` DISABLE KEYS */;
-INSERT INTO `product_property` VALUES (1,'Максимальная температура процессора'),(2,'Год релиза');
+INSERT INTO `product_property` VALUES (1,'Максимальная температура процессора'),(2,'Год релиза'),(3,'Тип памяти'),(4,'Объем видеопамяти'),(5,'Разрядность шины памяти'),(6,'Видео разъемы'),(7,'Тип охлаждения'),(8,'Сокет'),(9,'Чипсет'),(10,'Максимальная частота памяти (МГц)'),(11,'Подсветка');
 /*!40000 ALTER TABLE `product_property` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +231,7 @@ CREATE TABLE `product_property_value` (
   KEY `fk_product_property_vaue_product_property1_idx` (`PRODUCT_PROPERTY_ID`),
   CONSTRAINT `fk_product_property_vaue_product1` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_product_property_vaue_product_property1` FOREIGN KEY (`PRODUCT_PROPERTY_ID`) REFERENCES `product_property` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +240,7 @@ CREATE TABLE `product_property_value` (
 
 LOCK TABLES `product_property_value` WRITE;
 /*!40000 ALTER TABLE `product_property_value` DISABLE KEYS */;
-INSERT INTO `product_property_value` VALUES (1,2,1,'95°'),(2,2,2,'2017'),(3,1,2,'2018');
+INSERT INTO `product_property_value` VALUES (1,2,1,'95°'),(28,1,2,'2018'),(29,1,4,'6 ГБ'),(30,1,3,'GDDR6'),(31,1,5,'192 бит'),(32,1,6,'HDMI'),(33,1,6,'DisplayPort (3 шт)'),(34,1,7,'активное воздушное'),(38,1,11,'Есть'),(39,2,2,'2017'),(40,2,4,'4 ГБ'),(41,2,3,'GDDR5'),(42,2,5,'256 бит'),(43,2,6,'DVI-D'),(44,2,6,'HDMI'),(45,2,6,'DisplayPort (3 шт)'),(46,2,7,'активное воздушное'),(50,2,11,'Нет'),(51,3,2,'2014'),(53,3,3,'DDR3'),(57,3,8,'FM2+'),(58,3,9,'AMD A68H'),(59,3,10,'2400 МГц'),(60,3,11,'Нет');
 /*!40000 ALTER TABLE `product_property_value` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +260,7 @@ CREATE TABLE `section` (
   PRIMARY KEY (`ID`),
   KEY `parent_section_id_idx` (`PARENT_ID`),
   CONSTRAINT `parent_section_id` FOREIGN KEY (`PARENT_ID`) REFERENCES `section` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +269,7 @@ CREATE TABLE `section` (
 
 LOCK TABLES `section` WRITE;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` VALUES (3,'Видеокарты','/lab5/uploads/video_cards.jpg',1,NULL),(4,'Для теста',NULL,1,3),(5,'для теста',NULL,1,3),(6,'для теста ',NULL,1,4),(7,'для теста',NULL,1,6);
+INSERT INTO `section` VALUES (3,'Видеокарты','/lab5/uploads/video_cards.jpg',1,NULL),(8,'Материнские платы','/lab5/uploads/motherboard.jpg',1,NULL);
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,4 +339,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-17 17:51:14
+-- Dump completed on 2019-12-19 11:01:31
